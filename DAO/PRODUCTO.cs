@@ -16,14 +16,14 @@ namespace DAO
     {
         public PRODUCTO()
         {
-            this.FACTURAs = new HashSet<FACTURA>();
+            this.FACTURA = new HashSet<FACTURA>();
         }
     
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
-        public string Cantidad_Inventario { get; set; }
+        public Nullable<decimal> Cantidad_Inventario { get; set; }
     
-        public virtual ICollection<FACTURA> FACTURAs { get; set; }
+        public virtual ICollection<FACTURA> FACTURA { get; set; }
     }
 }

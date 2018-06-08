@@ -24,6 +24,7 @@
           <Property Name="Cedula_Cliente" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="Cantidad_Producto" Type="numeric" Precision="8" Scale="0" Nullable="false" />
           <Property Name="Total" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="PRODUCTO">
           <Key>
@@ -31,8 +32,8 @@
           </Key>
           <Property Name="Codigo" Type="nchar" MaxLength="15" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="170" Nullable="false" />
-          <Property Name="Precio" Type="numeric" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Cantidad_Inventario" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Precio" Type="numeric" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="Cantidad_Inventario" Type="numeric" Precision="16" Scale="0" />
         </EntityType>
         <Association Name="FK_FACTURA_CLIENTE1">
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
@@ -85,7 +86,7 @@
           <Property Name="Apellido" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="170" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="FACTURAs" Relationship="Self.FK_FACTURA_CLIENTE1" FromRole="CLIENTE" ToRole="FACTURA" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FK_FACTURA_CLIENTE1" FromRole="CLIENTE" ToRole="FACTURA" />
         </EntityType>
         <EntityType Name="FACTURA">
           <Key>
@@ -96,6 +97,7 @@
           <Property Name="Cedula_Cliente" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Cantidad_Producto" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
           <Property Name="Total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FK_FACTURA_CLIENTE1" FromRole="FACTURA" ToRole="CLIENTE" />
           <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_FACTURA_PRODUCTO" FromRole="FACTURA" ToRole="PRODUCTO" />
         </EntityType>
@@ -105,9 +107,9 @@
           </Key>
           <Property Name="Codigo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="170" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Precio" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
-          <Property Name="Cantidad_Inventario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="FACTURAs" Relationship="Self.FK_FACTURA_PRODUCTO" FromRole="PRODUCTO" ToRole="FACTURA" />
+          <Property Name="Precio" Type="Decimal" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="Cantidad_Inventario" Type="Decimal" Precision="16" Scale="0" />
+          <NavigationProperty Name="FACTURA" Relationship="Self.FK_FACTURA_PRODUCTO" FromRole="PRODUCTO" ToRole="FACTURA" />
         </EntityType>
         <Association Name="FK_FACTURA_CLIENTE1">
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
@@ -134,16 +136,16 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LAB_EFEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CLIENTEs" EntityType="Self.CLIENTE" />
-          <EntitySet Name="FACTURAs" EntityType="Self.FACTURA" />
-          <EntitySet Name="PRODUCTOes" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="FACTURA" EntityType="Self.FACTURA" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
           <AssociationSet Name="FK_FACTURA_CLIENTE1" Association="Self.FK_FACTURA_CLIENTE1">
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
-            <End Role="FACTURA" EntitySet="FACTURAs" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
           <AssociationSet Name="FK_FACTURA_PRODUCTO" Association="Self.FK_FACTURA_PRODUCTO">
-            <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
-            <End Role="FACTURA" EntitySet="FACTURAs" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="FACTURA" EntitySet="FACTURA" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -152,7 +154,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LAB_EFModelStoreContainer" CdmEntityContainer="LAB_EFEntities1">
-          <EntitySetMapping Name="CLIENTEs">
+          <EntitySetMapping Name="CLIENTE">
             <EntityTypeMapping TypeName="LAB_EFModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
@@ -163,17 +165,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FACTURAs">
+          <EntitySetMapping Name="FACTURA">
             <EntityTypeMapping TypeName="LAB_EFModel.FACTURA">
               <MappingFragment StoreEntitySet="FACTURA">
                 <ScalarProperty Name="Codigo_Producto" ColumnName="Codigo_Producto" />
                 <ScalarProperty Name="Cedula_Cliente" ColumnName="Cedula_Cliente" />
                 <ScalarProperty Name="Cantidad_Producto" ColumnName="Cantidad_Producto" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PRODUCTOes">
+          <EntitySetMapping Name="PRODUCTO">
             <EntityTypeMapping TypeName="LAB_EFModel.PRODUCTO">
               <MappingFragment StoreEntitySet="PRODUCTO">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
@@ -197,7 +200,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

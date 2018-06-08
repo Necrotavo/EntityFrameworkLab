@@ -53,6 +53,8 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAO_Clientes.cs" />
+    <Compile Include="DAO_Facturas.cs" />
+    <Compile Include="DAO_Productos.cs" />
     <Compile Include="FACTURA.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -94,6 +96,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -104,9 +109,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,7 +16,7 @@ namespace DAO
     {
         public CLIENTE()
         {
-            this.FACTURAs = new HashSet<FACTURA>();
+            this.FACTURA = new HashSet<FACTURA>();
         }
     
         public string Cedula { get; set; }
@@ -25,6 +25,6 @@ namespace DAO
         public string Correo { get; set; }
         public string Telefono { get; set; }
     
-        public virtual ICollection<FACTURA> FACTURAs { get; set; }
+        public virtual ICollection<FACTURA> FACTURA { get; set; }
     }
 }

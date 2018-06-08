@@ -82,6 +82,8 @@
     <Compile Include="TO_Cliente.vb" />
     <Compile Include="TO_ClienteList.vb" />
     <Compile Include="TO_Factura.vb" />
+    <Compile Include="TO_FacturaList.vb" />
+    <Compile Include="TO_ProductList.vb" />
     <Compile Include="TO_Producto.vb" />
   </ItemGroup>
   <ItemGroup>

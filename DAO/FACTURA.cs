@@ -18,6 +18,7 @@ namespace DAO
         public string Cedula_Cliente { get; set; }
         public decimal Cantidad_Producto { get; set; }
         public decimal Total { get; set; }
+        public System.DateTime Fecha { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
         public virtual PRODUCTO PRODUCTO { get; set; }

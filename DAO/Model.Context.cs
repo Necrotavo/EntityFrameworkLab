@@ -25,8 +25,8 @@ namespace DAO
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<CLIENTE> CLIENTEs { get; set; }
-        public DbSet<FACTURA> FACTURAs { get; set; }
-        public DbSet<PRODUCTO> PRODUCTOes { get; set; }
+        public DbSet<CLIENTE> CLIENTE { get; set; }
+        public DbSet<FACTURA> FACTURA { get; set; }
+        public DbSet<PRODUCTO> PRODUCTO { get; set; }
     }
 }
