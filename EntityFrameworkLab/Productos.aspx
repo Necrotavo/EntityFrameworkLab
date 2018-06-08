@@ -12,7 +12,7 @@
             <form id="form1" runat="server">
 
         <div class="column">
-            <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="Radios">
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="Radios" AutoPostBack="True">
                 <asp:ListItem Text="Insertar" Value="1"></asp:ListItem>
                 <asp:ListItem Text="Modificar" Value="2"></asp:ListItem>
                 <asp:ListItem Text="Consultar" Value="3"></asp:ListItem>
@@ -35,6 +35,8 @@
             <asp:Label ID="lblCantidad" runat="server" Text="Cantidad:" CssClass="label"></asp:Label>     
             &nbsp;
             <asp:TextBox ID="TextBox4" runat="server" CssClass="textBox"></asp:TextBox>
+      <br />
+                            <asp:Button ID="btnExecute" runat="server" Text="Ejecutar" CssClass="menuButton"/>
        
         </div>
 

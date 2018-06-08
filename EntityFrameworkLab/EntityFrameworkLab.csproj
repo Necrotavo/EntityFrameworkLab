@@ -59,22 +59,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Background.jpg" />
-    <Content Include="Clientes.aspx" />
+    <Content Include="AddClient.aspx" />
     <Content Include="Facturas.aspx" />
     <Content Include="Index.aspx" />
+    <Content Include="MenuClientes.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="StyleSheet1.css" />
+    <Content Include="UpdateClient.aspx" />
     <Content Include="Web.config" />
     <Content Include="welcome.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes.aspx.cs">
-      <DependentUpon>Clientes.aspx</DependentUpon>
+    <Compile Include="AddClient.aspx.cs">
+      <DependentUpon>AddClient.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Clientes.aspx.designer.cs">
-      <DependentUpon>Clientes.aspx</DependentUpon>
+    <Compile Include="AddClient.aspx.designer.cs">
+      <DependentUpon>AddClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Facturas.aspx.cs">
       <DependentUpon>Facturas.aspx</DependentUpon>
@@ -90,6 +92,13 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MenuClientes.aspx.cs">
+      <DependentUpon>MenuClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuClientes.aspx.designer.cs">
+      <DependentUpon>MenuClientes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -104,6 +113,13 @@
     </Compile>
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateClient.aspx.cs">
+      <DependentUpon>UpdateClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateClient.aspx.designer.cs">
+      <DependentUpon>UpdateClient.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

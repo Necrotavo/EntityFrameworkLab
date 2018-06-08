@@ -7,11 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace EntityFrameworkLab
 {
-    public partial class Clientes : System.Web.UI.Page
+    public partial class MenuClientes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnInsertar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("addClient.aspx");
         }
     }
 }
