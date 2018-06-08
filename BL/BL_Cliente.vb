@@ -56,7 +56,7 @@ Public Class BL_Cliente
         tocliente.Nombre = Me.Nombre
         tocliente.Apellido = Me.Apellido
         tocliente.Correo = Me.Correo
-        tocliente.Telefono = Me.Telefono
+        tocliente.telefono = Me.Telefono
         Return tocliente
     End Function
 
@@ -65,6 +65,6 @@ Public Class BL_Cliente
         Me.Nombre = tocliente.Nombre
         Me.Apellido = tocliente.Apellido
         Me.Correo = tocliente.Correo
-        Me.Telefono = tocliente.Telefono
+        Me.Telefono = tocliente.telefono
     End Sub
 End Class

@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
-
 namespace EntityFrameworkLab
 {
     public partial class Index : System.Web.UI.Page
