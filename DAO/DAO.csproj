@@ -55,6 +55,9 @@
     <Compile Include="DAO_Clientes.cs" />
     <Compile Include="DAO_Facturas.cs" />
     <Compile Include="DAO_Productos.cs" />
+    <Compile Include="DETALLE_FACTURA.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="FACTURA.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -77,6 +80,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TO\TO.vbproj">

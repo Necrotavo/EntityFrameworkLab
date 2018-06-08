@@ -4,4 +4,5 @@ Public Class TO_Producto
     Property Descripcion As String
     Property Precio As Int16
     Property Cantidad_Inventario As Int16
+    Property Cantidad_En_Factura As Int16
 End Class

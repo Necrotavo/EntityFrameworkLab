@@ -8,7 +8,7 @@ namespace DAO
 {
     public class DAO_Clientes
     {
-        LAB_EFEntities1 entidades = new LAB_EFEntities1();
+        LAB_EF entidades = new LAB_EF();
 
         public void insertClient(TO_Cliente client)
         {

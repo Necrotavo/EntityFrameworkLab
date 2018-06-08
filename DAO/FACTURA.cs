@@ -14,13 +14,16 @@ namespace DAO
     
     public partial class FACTURA
     {
-        public string Codigo_Producto { get; set; }
-        public string Cedula_Cliente { get; set; }
-        public decimal Cantidad_Producto { get; set; }
-        public decimal Total { get; set; }
+        public FACTURA()
+        {
+            this.DETALLE_FACTURA = new HashSet<DETALLE_FACTURA>();
+        }
+    
         public System.DateTime Fecha { get; set; }
+        public string Codigo { get; set; }
+        public string Cedula_Cliente { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
-        public virtual PRODUCTO PRODUCTO { get; set; }
+        public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
     }
 }

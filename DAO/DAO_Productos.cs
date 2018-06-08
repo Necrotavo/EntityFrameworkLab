@@ -9,7 +9,7 @@ namespace DAO
 {
     public class DAO_Productos
     {
-        LAB_EFEntities1 entidades = new LAB_EFEntities1();
+        LAB_EF entidades = new LAB_EF();
 
         public void selectProducts(TO_ProductList toProductoList)
         {//////////////////////

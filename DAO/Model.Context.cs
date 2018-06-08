@@ -13,10 +13,10 @@ namespace DAO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LAB_EFEntities1 : DbContext
+    public partial class LAB_EF : DbContext
     {
-        public LAB_EFEntities1()
-            : base("name=LAB_EFEntities1")
+        public LAB_EF()
+            : base("name=LAB_EF")
         {
         }
     
@@ -26,7 +26,9 @@ namespace DAO
         }
     
         public DbSet<CLIENTE> CLIENTE { get; set; }
+        public DbSet<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
         public DbSet<FACTURA> FACTURA { get; set; }
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
