@@ -4,7 +4,7 @@
 }
 
 .Radios{
-    font: 35px Brush Script MT;
+    font: 35px Lucida Sans Unicode;
     margin: 5px;
 }
 
@@ -20,24 +20,28 @@
     margin-bottom: 25%;
     border: 3px solid #916919;
 }
+.smallBox{
+    font-size: 20px;
+    border: solid #916919;
+    width: 35px
+}
+
 .textBox{
     font-size: 20px;
     border: solid #916919;
 }
 .label{
-    font: 35px Brush Script MT;
+    font: 35px Lucida Sans Unicode;
     margin: 5px;
 }
 .menuButton{
     background-color: antiquewhite;
     border: solid #916919;
     color: black;
-    padding: initial;
-    margin: 5px;
+    margin: 5px 5px 5px 0px;
     text-align: center;
     text-emphasis-color: gray;
-    width: 40%;
-    font: bold 35px Brush Script MT;
+    font: bold 30px Lucida Sans Unicode;
 }
 
 .column{
@@ -49,6 +53,8 @@ float: left;
     background-color: antiquewhite;
     margin-left: 10%;
     margin-right: 9%;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 .midDiv{
     display: inline-block;
