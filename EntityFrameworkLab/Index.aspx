@@ -9,10 +9,20 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
+    <div class="MainDiv">
+        <img src="welcome.jpg" style="width: 40%" />
+<br />
+    <asp:Button ID="btnClientes" runat="server" Text="Clientes" OnClick="Button1_Click" CssClass="menuButton" />
+<br />
+        <asp:Button ID="btnProductos" runat="server" Text="Productos" CssClass="menuButton" OnClick="btnProductos_Click"/>
+<br />
+        <asp:Button ID="btnFacturas" runat="server" Text="Facturas" CssClass="menuButton"/>
+<br />
+        <asp:Button ID="btnReportes" runat="server" Text="Reportes"  CssClass="menuButton"/>
+<br />
+
     </div>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+        
     </form>
 </body>
 </html>
