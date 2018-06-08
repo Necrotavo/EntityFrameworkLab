@@ -45,7 +45,6 @@ namespace DAO
         public void modifyClient(TO_Cliente client)
         {
             var clientes = entidades.CLIENTEs.First(c => c.Cedula == client.Cedula);
-            //Prueba de q subi algo
             clientes.Nombre = client.Nombre;
             clientes.Apellido = client.Apellido;
             clientes.Correo = client.Correo;
