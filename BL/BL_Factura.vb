@@ -9,7 +9,7 @@ Public Class BL_Factura
     Property ListaProductos As List(Of BL_Producto)
 
     Public Sub addFactura()
-        Dim daoFact As New DAO_Facturas();
+
 
     End Sub
 End Class
