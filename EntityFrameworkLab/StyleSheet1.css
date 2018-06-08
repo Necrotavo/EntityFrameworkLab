@@ -1,3 +1,65 @@
 ﻿body {
-    background-image : url("Background.jpg")
+    background-image : url("Background.jpg");
+   
 }
+
+.Radios{
+    font: 35px Brush Script MT;
+    margin: 5px;
+}
+
+.MainDiv{
+
+    width: 70%;
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 25%;
+    border: 3px solid #916919;
+}
+.textBox{
+    font-size: 20px;
+    border: solid #916919;
+}
+.label{
+    font: 35px Brush Script MT;
+    margin: 5px;
+}
+.menuButton{
+    background-color: antiquewhite;
+    border: solid #916919;
+    color: black;
+    padding: initial;
+    margin: 5px;
+    text-align: center;
+    text-emphasis-color: gray;
+    width: 40%;
+    font: bold 35px Brush Script MT;
+}
+
+.column{
+float: left;
+    margin: 20px;
+    background-color: grey;
+    padding-bottom: 100%;
+    margin-bottom: -100%;
+    background-color: antiquewhite;
+    margin-left: 10%;
+    margin-right: 9%;
+}
+.midDiv{
+    display: inline-block;
+    width: 50%;
+    background-color: antiquewhite;
+    text-align: center;
+    align-content: center;
+    padding: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+
+

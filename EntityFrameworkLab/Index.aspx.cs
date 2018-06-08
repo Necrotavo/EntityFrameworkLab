@@ -16,8 +16,12 @@ namespace EntityFrameworkLab
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            BL_Cliente blClient = new BL_Cliente();
-            blClient.insertClient();
+            Response.Redirect("Clientes.aspx");
+        }
+
+        protected void btnProductos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Productos.aspx");
         }
     }
 }
