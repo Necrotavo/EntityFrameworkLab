@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="457d67ac6c9c4efb9ddebb2d24f471e2" Name="Diagram1">
-        <EntityTypeShape EntityType="LAB_EFModel.CLIENTE" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="52a4a288651643499bdaef3b944966fe" Name="Diagram1">
+        <EntityTypeShape EntityType="LAB_EFModel.CLIENTE" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAB_EFModel.DETALLE_FACTURA" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="LAB_EFModel.FACTURA" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="LAB_EFModel.PRODUCTO" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
-        <AssociationConnector Association="LAB_EFModel.FK_FACTURA_CLIENTE1" ManuallyRouted="false" />
-        <AssociationConnector Association="LAB_EFModel.FK_FACTURA_PRODUCTO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LAB_EFModel.PRODUCTO" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAB_EFModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="LAB_EFModel.FK_FACTURA_CLIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="LAB_EFModel.FK_DETALLE_FACTURA_FACTURA" ManuallyRouted="false" />
+        <AssociationConnector Association="LAB_EFModel.FK_DETALLE_FACTURA_PRODUCTO" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

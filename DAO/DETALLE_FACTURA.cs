@@ -12,18 +12,13 @@ namespace DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCTO
+    public partial class DETALLE_FACTURA
     {
-        public PRODUCTO()
-        {
-            this.DETALLE_FACTURA = new HashSet<DETALLE_FACTURA>();
-        }
+        public string Codigo_Factura { get; set; }
+        public string Codigo_Producto { get; set; }
+        public decimal Cantidad { get; set; }
     
-        public string Codigo { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
-        public Nullable<decimal> Cantidad_Inventario { get; set; }
-    
-        public virtual ICollection<DETALLE_FACTURA> DETALLE_FACTURA { get; set; }
+        public virtual FACTURA FACTURA { get; set; }
+        public virtual PRODUCTO PRODUCTO { get; set; }
     }
 }
