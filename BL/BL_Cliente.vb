@@ -32,7 +32,8 @@ Public Class BL_Cliente
         Dim tocliente As New TO_Cliente()
         tocliente.Cedula = Me.Cedula
         Dim daoClients As New DAO_Clientes()
-        daoClients.deleteClient(tocliente)
+        daoClients.selectACliente(tocliente)
+        igualarBLaTO(tocliente)
 
     End Sub
 
