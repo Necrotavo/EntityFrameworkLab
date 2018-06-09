@@ -10,45 +10,56 @@ namespace EntityFrameworkLab
 {
     public partial class SelectCliente : System.Web.UI.Page
     {
-        BL_Cliente blClient = new BL_Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
+            enableTxtBox(false);
             if (IsPostBack)
             {
-                blClient.listaClientes = (List<BL_Cliente>)ViewState["ListaP"];
             }
-            else
-            {
-                blClient.loadClients();
-                ddlCedulas.DataSource = blClient.listaClientes;
-                ddlCedulas.DataValueField = "Cedula";
-                ddlCedulas.DataTextField = "Cedula";
+            else {
+                loadList();
+            }
 
-                ddlCedulas.DataBind();
-                ddlCedulas.Items.Add(new ListItem("Seleccionar"));
-                ddlCedulas.SelectedValue = "Seleccionar";
-                ViewState["ListaP"] = blClient.listaClientes;
-            }
+        }
+
+        protected void loadList()
+        {
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.loadClients();
+            ddlCedulas.DataSource = cliente.listaClientes;//Aqu[i puse el foreach que le dije
+            ddlCedulas.DataValueField = "Cedula";
+            ddlCedulas.DataTextField = "Cedula";
+            ddlCedulas.DataBind();
+            ddlCedulas.Items.Add(new ListItem("Seleccionar"));
+            ddlCedulas.SelectedValue = "Seleccionar";
+        }
+
+        protected void enableTxtBox(Boolean value)
+        {
+            txtName.Enabled = value;
+            txtLastName.Enabled = value;
+            txtMail.Enabled = value;
+            txtTelefono.Enabled = value;
         }
 
         protected void ddlCedulas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlCedulas.SelectedItem.Text == "Seleccionar")
-            {
-                txtName.Text = "";
-                txtLastName.Text = "";
-                txtMail.Text = "";
-                txtTelefono.Text = "";
-            }
-            else
-            {
-                blClient.Cedula = ddlCedulas.SelectedValue;
-                blClient.loadClient();
-                txtName.Text = blClient.Nombre;
-                txtLastName.Text = blClient.Apellido;
-                txtMail.Text = blClient.Correo;
-                txtTelefono.Text = blClient.Telefono;
-            }
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.Cedula = ddlCedulas.SelectedValue;
+            cliente.loadClient();
+            txtName.Text = cliente.Nombre;
+            txtLastName.Text = cliente.Apellido;
+            txtMail.Text = cliente.Correo;
+            txtTelefono.Text = cliente.Telefono;
+            //if (!cliente.hasEmpty())
+            //{
+            //    enableTxtBox(true);
+            //}
+        }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuClientes.aspx");
         }
     }
 }

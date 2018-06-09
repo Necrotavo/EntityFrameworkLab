@@ -21,6 +21,10 @@
         <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="menuButton" OnClick="btnEliminar_Click"/>
 <br />
         <asp:Button ID="btnConsultar" runat="server" Text="Consultar"  CssClass="menuButton" OnClick="btnConsultar_Click"/>
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnSalir" runat="server" Text="Regresar" CssClass="menuButton" OnClick="btnSalir_Click"/>
 <br />
         <br />
         <br />

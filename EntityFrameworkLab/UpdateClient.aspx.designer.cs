@@ -31,13 +31,13 @@ namespace EntityFrameworkLab {
         protected global::System.Web.UI.WebControls.Label lblCed;
         
         /// <summary>
-        /// txtCed control.
+        /// ddlCedulas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCed;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCedulas;
         
         /// <summary>
         /// lblName control.
@@ -119,5 +119,14 @@ namespace EntityFrameworkLab {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdate;
+        
+        /// <summary>
+        /// btnSalir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSalir;
     }
 }

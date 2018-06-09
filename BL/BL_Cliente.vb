@@ -85,10 +85,10 @@ Public Class BL_Cliente
             If Me.Cedula.Trim() <> "" Or Me.Nombre.Trim() <> "" Or Me.Apellido.Trim() <> "" Or
                 Me.Correo.Trim() <> "" Or Me.Telefono.Trim() <> "" Then
 
-                Return True
+                Return False
             End If
         Else
         End If
-        Return False
+        Return True
     End Function
 End Class

@@ -33,5 +33,10 @@ namespace EntityFrameworkLab
         {
             Response.Redirect("SelectCliente.aspx");
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Index.aspx");
+        }
     }
 }

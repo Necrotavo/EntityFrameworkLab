@@ -39,6 +39,9 @@
                             <asp:TextBox ID="txtTelefono" runat="server" CssClass="textBox" ReadOnly="True"></asp:TextBox>
                             <br />
                             <br />
+                            <asp:Button ID="btnSalir" runat="server" CssClass="menuButton" Text="Regresar" OnClick="btnSalir_Click" />
+                            <br />
+                            <br />
         </div>
             <br />
         </form>

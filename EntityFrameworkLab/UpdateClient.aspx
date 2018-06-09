@@ -19,7 +19,8 @@
                             <br />
                             <asp:Label ID="lblCed" runat="server" Text="Cedula:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="txtCed" runat="server" CssClass="textBox" OnTextChanged="txtCed_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:DropDownList ID="ddlCedulas" runat="server" AutoPostBack="True" Height="33px" OnSelectedIndexChanged="ddlCedulas_SelectedIndexChanged" Width="174px" CssClass="menuButton">
+                            </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblName" runat="server" Text="Nombre:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
@@ -40,6 +41,11 @@
                             <br />
                             <br />
                             <asp:Button ID="btnUpdate" runat="server" Text="Modificar" CssClass="menuButton" OnClick="btnUpdate_Click"/>
+                            <br />
+                            <br />
+
+                            <asp:Button ID="btnSalir" runat="server" Text="Regresar" CssClass="menuButton" OnClick="btnSalir_Click" />
+
                             <br />
                             <br />
         </div>

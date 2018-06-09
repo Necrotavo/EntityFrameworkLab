@@ -43,6 +43,9 @@
                             <asp:Button ID="btnAdd" runat="server" Text="Agregar" CssClass="menuButton" OnClick="btnAdd_Click"/>
                             <br />
                             <br />
+                            <asp:Button ID="btnSalir" runat="server" CssClass="menuButton" Text="Regresar" OnClick="btnSalir_Click" />
+                            <br />
+                            <br />
         </div>
             <br />
         </form>

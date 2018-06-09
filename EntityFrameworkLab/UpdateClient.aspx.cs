@@ -13,12 +13,31 @@ namespace EntityFrameworkLab
         protected void Page_Load(object sender, EventArgs e)
         {
             enableTxtBox(false);
+            if (IsPostBack)
+            {
+
+            }
+            else {
+                loadList();
+            }
+        }
+
+        protected void loadList()
+        {
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.loadClients();
+            ddlCedulas.DataSource = cliente.listaClientes;//Aqu[i puse el foreach que le dije
+            ddlCedulas.DataValueField = "Cedula";
+            ddlCedulas.DataTextField = "Cedula";
+            ddlCedulas.DataBind();
+            ddlCedulas.Items.Add(new ListItem("Seleccionar"));
+            ddlCedulas.SelectedValue = "Seleccionar";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             BL_Cliente cliente = new BL_Cliente();
-            cliente.Cedula = txtCed.Text;
+            cliente.Cedula = ddlCedulas.SelectedValue;
             cliente.Nombre = txtName.Text;
             cliente.Correo = txtMail.Text;
             cliente.Telefono = txtTelefono.Text;
@@ -33,17 +52,24 @@ namespace EntityFrameworkLab
             txtTelefono.Enabled = value;
         }
 
-        protected void txtCed_TextChanged(object sender, EventArgs e)
+        protected void ddlCedulas_SelectedIndexChanged(object sender, EventArgs e)
         {
             BL_Cliente cliente = new BL_Cliente();
-            cliente.Cedula = txtCed.Text;
+            cliente.Cedula = ddlCedulas.SelectedValue;
             cliente.loadClient();
             txtName.Text = cliente.Nombre;
             txtLastName.Text = cliente.Apellido;
             txtMail.Text = cliente.Correo;
             txtTelefono.Text = cliente.Telefono;
+            if (!cliente.hasEmpty())
+            {
+                enableTxtBox(true);
+            }
+        }
 
-            enableTxtBox(true);
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuClientes.aspx");
         }
     }
 }
