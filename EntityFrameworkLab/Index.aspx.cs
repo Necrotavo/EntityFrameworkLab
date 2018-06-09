@@ -21,7 +21,12 @@ namespace EntityFrameworkLab
 
         protected void btnProductos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Productos.aspx");
+            Response.Redirect("MenuProductos.aspx");
+        }
+
+        protected void btnReportes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Reportes.aspx");
         }
     }
 }
