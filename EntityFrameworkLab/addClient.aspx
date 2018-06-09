@@ -40,7 +40,7 @@
                             <br />
                             <br />
                             <br />
-                            <asp:Button ID="btnAdd" runat="server" Text="Agregar" CssClass="menuButton"/>
+                            <asp:Button ID="btnAdd" runat="server" Text="Agregar" CssClass="menuButton" OnClick="btnAdd_Click"/>
                             <br />
                             <br />
         </div>
