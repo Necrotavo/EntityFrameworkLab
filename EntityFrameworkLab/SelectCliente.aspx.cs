@@ -4,36 +4,51 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using BL;
+using BL;
 
 namespace EntityFrameworkLab
 {
     public partial class SelectCliente : System.Web.UI.Page
     {
+        BL_Cliente blClient = new BL_Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
-            enableTxtBox(false);
             if (IsPostBack)
             {
-
+                blClient.listaClientes = (List<BL_Cliente>)ViewState["ListaP"];
             }
-            else {
-                //BL_Cliente cliente = new BL_Cliente();
+            else
+            {
+                blClient.loadClients();
+                ddlCedulas.DataSource = blClient.listaClientes;
+                ddlCedulas.DataValueField = "Cedula";
+                ddlCedulas.DataTextField = "Cedula";
+
+                ddlCedulas.DataBind();
+                ddlCedulas.Items.Add(new ListItem("Seleccionar"));
+                ddlCedulas.SelectedValue = "Seleccionar";
+                ViewState["ListaP"] = blClient.listaClientes;
             }
-
-        }
-
-        protected void enableTxtBox(Boolean value)
-        {
-            txtName.Enabled = value;
-            txtLastName.Enabled = value;
-            txtMail.Enabled = value;
-            txtTelefono.Enabled = value;
         }
 
         protected void ddlCedulas_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (ddlCedulas.SelectedItem.Text == "Seleccionar")
+            {
+                txtName.Text = "";
+                txtLastName.Text = "";
+                txtMail.Text = "";
+                txtTelefono.Text = "";
+            }
+            else
+            {
+                blClient.Cedula = ddlCedulas.SelectedValue;
+                blClient.loadClient();
+                txtName.Text = blClient.Nombre;
+                txtLastName.Text = blClient.Apellido;
+                txtMail.Text = blClient.Correo;
+                txtTelefono.Text = blClient.Telefono;
+            }
         }
     }
 }

@@ -19,24 +19,24 @@
                             <br />
                             <asp:Label ID="lblCed" runat="server" Text="Cedula:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:DropDownList ID="ddlCedulas" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="ddlCedulas_SelectedIndexChanged" Width="173px">
+                            <asp:DropDownList ID="ddlCedulas" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="ddlCedulas_SelectedIndexChanged" Width="173px" CssClass="menuButton">
                             </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblName" runat="server" Text="Nombre:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
-                            <asp:TextBox ID="txtName" runat="server" CssClass="textBox"></asp:TextBox>
+                            <asp:TextBox ID="txtName" runat="server" CssClass="textBox" ReadOnly="True"></asp:TextBox>
                             <br />
                             <asp:Label ID="lblLastName" runat="server" Text="Apellido:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;     
-                            <asp:TextBox ID="txtLastName" runat="server" CssClass="textBox"></asp:TextBox>
+                            <asp:TextBox ID="txtLastName" runat="server" CssClass="textBox" ReadOnly="True"></asp:TextBox>
                             <br />
                             <asp:Label ID="lblMail" runat="server" Text="Correo:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
-                            <asp:TextBox ID="txtMail" runat="server" CssClass="textBox"></asp:TextBox>
+                            <asp:TextBox ID="txtMail" runat="server" CssClass="textBox" ReadOnly="True"></asp:TextBox>
                             <br />
                             <asp:Label ID="lblTelefono" runat="server" Text="Telefono:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;     
-                            <asp:TextBox ID="txtTelefono" runat="server" CssClass="textBox"></asp:TextBox>
+                            <asp:TextBox ID="txtTelefono" runat="server" CssClass="textBox" ReadOnly="True"></asp:TextBox>
                             <br />
                             <br />
         </div>
