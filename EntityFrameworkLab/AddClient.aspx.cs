@@ -28,5 +28,10 @@ namespace EntityFrameworkLab
 
             client.insertClient();
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuClientes.aspx");
+        }
     }
 }

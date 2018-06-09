@@ -15,7 +15,6 @@ namespace EntityFrameworkLab
             enableTxtBox(false);
             if (IsPostBack)
             {
-
             }
             else {
                 loadList();
@@ -56,6 +55,11 @@ namespace EntityFrameworkLab
             //{
             //    enableTxtBox(true);
             //}
+        }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuClientes.aspx");
         }
     }
 }

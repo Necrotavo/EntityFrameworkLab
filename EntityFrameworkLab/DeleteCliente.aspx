@@ -43,6 +43,9 @@
                             <asp:Button ID="btnDelete" runat="server" Text="Eliminar" CssClass="menuButton" OnClick="btnDelete_Click"/>
                             <br />
                             <br />
+                            <asp:Button ID="btnSalir" runat="server" CssClass="menuButton" Text="Regresar" OnClick="btnSalir_Click" />
+                            <br />
+                            <br />
         </div>
             <br />
         </form>

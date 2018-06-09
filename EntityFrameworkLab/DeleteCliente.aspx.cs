@@ -79,5 +79,9 @@ namespace EntityFrameworkLab
             ViewState["HeEliminado"] = false;
         }
 
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuClientes.aspx");
+        }
     }
 }

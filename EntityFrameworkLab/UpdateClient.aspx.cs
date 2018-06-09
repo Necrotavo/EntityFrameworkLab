@@ -66,5 +66,10 @@ namespace EntityFrameworkLab
                 enableTxtBox(true);
             }
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuClientes.aspx");
+        }
     }
 }
