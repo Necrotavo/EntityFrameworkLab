@@ -15,9 +15,12 @@
             <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="Radios" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                 <asp:ListItem Text="Insertar" Value="1"></asp:ListItem>
                 <asp:ListItem Text="Modificar" Value="2"></asp:ListItem>
-                <asp:ListItem Text="Consultar" Value="3"></asp:ListItem>
-                <asp:ListItem Text="Eliminar" Value="4"></asp:ListItem>
+                <asp:ListItem Text="Eliminar" Value="3"></asp:ListItem>
             </asp:RadioButtonList>
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Consultar" CssClass="label"></asp:Label>
+            <br />
+            <asp:DropDownList ID="dropClients" runat="server" CssClass="menuButton"></asp:DropDownList>
         </div>
                         <div class="column">
             <asp:Label ID="lblCod" runat="server" Text="Codigo:" CssClass="label"></asp:Label>
@@ -39,15 +42,6 @@
                             <asp:Button ID="btnExecute" runat="server" Text="Ejecutar" CssClass="menuButton" OnClick="btnExecute_Click"/>
        
         </div>
-
-            <br />
-                <br />
-                <div class="midDiv">
-                    <asp:Label ID="Label2" runat="server" Text="Aqui va el grid"></asp:Label>
-                    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-        </div>
-        </form>
-    </div>
     
 </body>
 </html>

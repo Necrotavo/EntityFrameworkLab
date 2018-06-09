@@ -13,7 +13,11 @@ namespace EntityFrameworkLab
         BL_Producto blProduct = new BL_Producto();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+            if (IsPostBack)
+            {
+                blProduct.listaProductos = (List<BL_Producto>)ViewState["ListaP"];
+            }
         }
 
         protected void btnExecute_Click(object sender, EventArgs e)
@@ -25,6 +29,10 @@ namespace EntityFrameworkLab
                     break;
                 case 2:
                     update();
+                    break;
+
+                case 3:
+                    delete();
                     break;
             }
         }
@@ -47,27 +55,44 @@ namespace EntityFrameworkLab
             blProduct.Cantidad_Inventario = Convert.ToInt16(TextBox4.Text);
 
             blProduct.modifyProduct();
+            clearBoxes();
         }
 
-        private void select()
-        {
-
-        }
 
         private void delete()
         {
+            blProduct.Codigo = TextBox1.Text;
 
+            blProduct.deleteProduct();
+
+            clearBoxes();
+        }
+
+        private void clearBoxes()
+        {
+            TextBox1.Text = "Listo";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt16(RadioButtonList1.SelectedValue) == 2)
+            if (Convert.ToInt16(RadioButtonList1.SelectedValue) == 2 || Convert.ToInt16(RadioButtonList1.SelectedValue) == 3)
             {
                 TextBox1.AutoPostBack = true;
                 TextBox2.Enabled = false;
                 TextBox3.Enabled = false;
                 TextBox4.Enabled = false;
                 
+            }
+            if(Convert.ToInt16(RadioButtonList1.SelectedValue) == 1)
+            {
+                TextBox1.AutoPostBack = false;
+                TextBox1.Enabled = true;
+                TextBox2.Enabled = true;
+                TextBox3.Enabled = true;
+                TextBox4.Enabled = true;
             }
         }
 
