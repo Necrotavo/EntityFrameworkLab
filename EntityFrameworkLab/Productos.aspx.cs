@@ -21,7 +21,7 @@ namespace EntityFrameworkLab
             switch (Convert.ToInt16(RadioButtonList1.SelectedValue))
             {
                 case 1:
-
+                    insert();
                     break;
             }
         }
