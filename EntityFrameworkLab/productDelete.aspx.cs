@@ -14,21 +14,30 @@ namespace EntityFrameworkLab
         {
             if (IsPostBack)
             {
-                blProduct.listaProductos = (List<BL_Producto>)ViewState["ListaP"];
+                if ((Boolean)ViewState["HeEliminado"])
+                {
+                    loadList();
+                }
             }
             else
             {
-                blProduct.selectProductos();
-                dropClients.DataSource = blProduct.listaProductos;
-                dropClients.DataValueField = "Codigo";
-                dropClients.DataTextField = "Descripcion";
 
-                dropClients.DataBind();
-                dropClients.Items.Add(new ListItem("Seleccionar"));
-                dropClients.SelectedValue = "Seleccionar";
-                ViewState["ListaP"] = blProduct.listaProductos;
+                loadList();
             }
         }
+
+        protected void loadList()
+        {
+            blProduct.selectProductos();
+            dropClients.DataSource = blProduct.listaProductos;
+            dropClients.DataValueField = "Codigo";
+            dropClients.DataTextField = "Descripcion";
+            dropClients.DataBind();
+            dropClients.Items.Add(new ListItem("Seleccionar"));
+            dropClients.SelectedValue = "Seleccionar";
+            ViewState["HeEliminado"] = false;
+        }
+
 
         protected void btnExecute_Click(object sender, EventArgs e)
         {
@@ -36,6 +45,8 @@ namespace EntityFrameworkLab
             {
                 blProduct.Codigo = dropClients.SelectedValue;
                 blProduct.deleteProduct();
+                loadList();
+                ViewState["HeEliminado"] = true;
             }
           
 
