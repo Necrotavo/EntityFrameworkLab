@@ -42,7 +42,7 @@
                             <asp:Button ID="btnExecute" runat="server" Text="Ejecutar" CssClass="menuButton" OnClick="btnExecute_Click"/>
        
         </div>
-    
+    </form>
 </body>
 </html>
 

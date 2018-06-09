@@ -18,6 +18,13 @@ namespace EntityFrameworkLab
             {
                 blProduct.listaProductos = (List<BL_Producto>)ViewState["ListaP"];
             }
+            else
+            {
+                blProduct.selectClientes();
+                dropClients.DataSource = blProduct.listaProductos;
+                dropClients.DataBind();
+                ViewState["ListaP"] = blProduct.listaProductos;
+            }
         }
 
         protected void btnExecute_Click(object sender, EventArgs e)

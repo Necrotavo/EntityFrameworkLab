@@ -9,6 +9,7 @@ Public Class BL_Producto
 
     Public Sub selectClientes()
         Dim toProductList As New TO_ProductList
+        toProductList.toProductList = New List(Of TO_Producto)
         Dim daoProducto As New DAO_Productos
         daoProducto.selectProducts(toProductList)
         If toProductList.toProductList.Count() > 0 Then
