@@ -12,18 +12,24 @@ namespace EntityFrameworkLab
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            BL_Cliente cliente = new BL_Cliente();
             enableTxtBox(false);
             if (IsPostBack)
             {
-                ddlClientes.DataSource = ViewState["ListaCedula"];
+                cliente.listaClientes = (List<BL_Cliente>)ViewState["ListaCedula"];
             }
             else {
-                BL_Cliente cliente = new BL_Cliente();
                 cliente.loadClients();
                 ddlClientes.DataSource = cliente.listaClientes;
+                foreach (BL_Cliente item in cliente.listaClientes)
+                {
+                    ddlClientes.Items.Add(new ListItem(item.Cedula));
+                }
                 ddlClientes.DataValueField = "Cedula";
                 ddlClientes.DataTextField = "Cedula";
                 ddlClientes.DataBind();
+                ddlClientes.Items.Add(new ListItem("Seleccionar"));
+                ddlClientes.SelectedValue = "Seleccionar";
                 ViewState["ListaCedula"] = ddlClientes.DataSource;
             }
         }

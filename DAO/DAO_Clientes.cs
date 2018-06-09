@@ -35,6 +35,7 @@ namespace DAO
                 tempClient.Apellido = item.Apellido;
                 tempClient.Correo = item.Correo;
                 tempClient.Telefono = item.Telefono;
+                list.listaClientes = new List<TO_Cliente>();
                 list.listaClientes.Add(tempClient);
             }
         }

@@ -1,6 +1,7 @@
 ﻿
 Imports DAO
 Imports [TO]
+<Serializable>
 Public Class BL_Cliente
     Property Cedula As String
     Property Nombre As String
@@ -45,7 +46,7 @@ Public Class BL_Cliente
         If (toclientlist.listaClientes.Count > 0) Then
             For Each tocliente As TO_Cliente In toclientlist.listaClientes
                 Dim cliente As New BL_Cliente()
-                igualarBLaTO(tocliente)
+                cliente.igualarBLaTO(tocliente)
                 listaClientes.Add(cliente)
             Next
         End If
