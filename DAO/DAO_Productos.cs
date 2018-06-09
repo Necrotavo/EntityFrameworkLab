@@ -62,10 +62,10 @@ namespace DAO
             var producto = from r in entidades.PRODUCTO where r.Codigo == toProducto.Codigo select r;
             if (producto.Count() > 0)
             {
-                producto.First().Codigo = toProducto.Codigo;
                 producto.First().Descripcion = toProducto.Descripcion;
                 producto.First().Precio = toProducto.Precio;
                 producto.First().Cantidad_Inventario = toProducto.Cantidad_Inventario;
+                entidades.SaveChanges();
             }
         }
     }

@@ -12,7 +12,7 @@
             <form id="form1" runat="server">
 
         <div class="column">
-            <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="Radios" AutoPostBack="True">
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="Radios" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
                 <asp:ListItem Text="Insertar" Value="1"></asp:ListItem>
                 <asp:ListItem Text="Modificar" Value="2"></asp:ListItem>
                 <asp:ListItem Text="Consultar" Value="3"></asp:ListItem>
@@ -22,7 +22,7 @@
                         <div class="column">
             <asp:Label ID="lblCod" runat="server" Text="Codigo:" CssClass="label"></asp:Label>
             &nbsp;
-            <asp:TextBox ID="TextBox1" runat="server" CssClass="textBox"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" CssClass="textBox" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
             <br />  
             <asp:Label ID="lblDesc" runat="server" Text="Descripcion:" CssClass="label"></asp:Label>     
             &nbsp;

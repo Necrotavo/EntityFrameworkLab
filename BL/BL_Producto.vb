@@ -23,6 +23,7 @@ Public Class BL_Producto
     Public Sub selectAProduct()
         Dim toProduct As New TO_Producto
         Dim daoProducto As New DAO_Productos
+        toProduct = igualarTOProducto()
         daoProducto.selectAProduct(toProduct)
         igualarDesdeTOProducto(toProduct)
     End Sub
