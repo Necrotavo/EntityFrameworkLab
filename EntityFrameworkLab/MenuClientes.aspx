@@ -16,11 +16,11 @@
 <br />
     <asp:Button ID="btnInsertar" runat="server" Text="Insertar" OnClick="btnInsertar_Click" CssClass="menuButton" />
 <br />
-        <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="menuButton"/>
+        <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="menuButton" OnClick="btnModificar_Click"/>
 <br />
-        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="menuButton"/>
+        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="menuButton" OnClick="btnEliminar_Click"/>
 <br />
-        <asp:Button ID="btnConsultar" runat="server" Text="Consultar"  CssClass="menuButton"/>
+        <asp:Button ID="btnConsultar" runat="server" Text="Consultar"  CssClass="menuButton" OnClick="btnConsultar_Click"/>
 <br />
         <br />
         <br />

@@ -18,5 +18,20 @@ namespace EntityFrameworkLab
         {
             Response.Redirect("AddClient.aspx");
         }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UpdateClient.aspx");
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DeleteCliente.aspx");
+        }
+
+        protected void btnConsultar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("SelectCliente.aspx");
+        }
     }
 }
