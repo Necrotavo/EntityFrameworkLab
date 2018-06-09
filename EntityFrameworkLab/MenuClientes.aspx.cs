@@ -16,7 +16,7 @@ namespace EntityFrameworkLab
 
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("addClient.aspx");
+            Response.Redirect("AddClient.aspx");
         }
     }
 }
