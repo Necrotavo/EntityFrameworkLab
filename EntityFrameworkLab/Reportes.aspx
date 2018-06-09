@@ -24,7 +24,7 @@
         <br />
         <asp:Calendar ID="Calendar2" runat="server" Enabled="False" OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="menuButton"/>
+        <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="menuButton" OnClick="Button1_Click"/>
 
     </div>
 

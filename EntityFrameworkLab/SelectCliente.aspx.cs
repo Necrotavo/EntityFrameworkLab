@@ -10,16 +10,26 @@ namespace EntityFrameworkLab
 {
     public partial class SelectCliente : System.Web.UI.Page
     {
+        BL_Cliente blClient = new BL_Cliente();
         protected void Page_Load(object sender, EventArgs e)
         {
-            enableTxtBox(false);
+
             if (IsPostBack)
             {
+                blClient.listaClientes = (List<BL_Cliente>)ViewState["ListaP"];
             }
-            else {
-                loadList();
-            }
+            else
+            {
+                blClient.loadClients();
+                ddlCedulas.DataSource = blClient.listaClientes;
+                ddlCedulas.DataValueField = "Cedula";
+                ddlCedulas.DataTextField = "Cedula";
 
+                ddlCedulas.DataBind();
+                ddlCedulas.Items.Add(new ListItem("Seleccionar"));
+                ddlCedulas.SelectedValue = "Seleccionar";
+                ViewState["ListaP"] = blClient.listaClientes;
+            }
         }
 
         protected void loadList()
@@ -44,17 +54,14 @@ namespace EntityFrameworkLab
 
         protected void ddlCedulas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BL_Cliente cliente = new BL_Cliente();
-            cliente.Cedula = ddlCedulas.SelectedValue;
-            cliente.loadClient();
-            txtName.Text = cliente.Nombre;
-            txtLastName.Text = cliente.Apellido;
-            txtMail.Text = cliente.Correo;
-            txtTelefono.Text = cliente.Telefono;
-            //if (!cliente.hasEmpty())
-            //{
-            //    enableTxtBox(true);
-            //}
+
+            blClient.Cedula = ddlCedulas.SelectedValue;
+            blClient.loadClient();
+            txtName.Text = blClient.Nombre;
+            txtLastName.Text = blClient.Apellido;
+            txtMail.Text = blClient.Correo;
+            txtTelefono.Text = blClient.Telefono;
+
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)

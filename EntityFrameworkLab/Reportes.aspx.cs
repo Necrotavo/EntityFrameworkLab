@@ -52,12 +52,9 @@ namespace EntityFrameworkLab
             }
         }
 
-        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            if (true)
-            {
 
-            }
         }
     }
 }
