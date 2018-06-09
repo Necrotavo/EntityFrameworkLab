@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using BL
+using BL;
 
 namespace EntityFrameworkLab
 {
@@ -15,7 +15,16 @@ namespace EntityFrameworkLab
             enableTxtBox(false);
             if (IsPostBack)
             {
-
+                ddlClientes.DataSource = ViewState["ListaCedula"];
+            }
+            else {
+                BL_Cliente cliente = new BL_Cliente();
+                cliente.loadClients();
+                ddlClientes.DataSource = cliente.listaClientes;
+                ddlClientes.DataValueField = "Cedula";
+                ddlClientes.DataTextField = "Cedula";
+                ddlClientes.DataBind();
+                ViewState["ListaCedula"] = ddlClientes.DataSource;
             }
         }
 
@@ -31,5 +40,18 @@ namespace EntityFrameworkLab
             txtMail.Enabled = value;
             txtTelefono.Enabled = value;
         }
+
+        protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.Cedula = ddlClientes.SelectedValue;
+            cliente.loadClient();
+            txtName.Text = cliente.Nombre;
+            txtLastName.Text = cliente.Apellido;
+            txtMail.Text = cliente.Correo;
+            txtTelefono.Text = cliente.Telefono;
+        }
+        
+
     }
 }
