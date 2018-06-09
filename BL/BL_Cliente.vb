@@ -30,6 +30,13 @@ Public Class BL_Cliente
     End Sub
 
     Public Sub loadClient()
+        If Me.Cedula = "Seleccionar" Then
+            Me.Cedula = ""
+            Me.Nombre = ""
+            Me.Apellido = ""
+            Me.Correo = ""
+            Me.Telefono = ""
+        End If
         Dim tocliente As New TO_Cliente()
         tocliente.Cedula = Me.Cedula
         Dim daoClients As New DAO_Clientes()
