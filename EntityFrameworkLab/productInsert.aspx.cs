@@ -25,5 +25,10 @@ namespace EntityFrameworkLab
 
             blProduct.insertProduct();
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuProductos.aspx");
+        }
     }
 }

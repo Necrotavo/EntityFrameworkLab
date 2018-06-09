@@ -22,7 +22,7 @@ namespace EntityFrameworkLab
                 blProduct.selectProductos();
                 dropClients.DataSource = blProduct.listaProductos;
                 dropClients.DataValueField = "Codigo";
-                dropClients.DataTextField = "Descripcion";
+                dropClients.DataTextField = "Codigo";
 
                 dropClients.DataBind();
                 dropClients.Items.Add(new ListItem("Seleccionar"));
@@ -58,6 +58,11 @@ namespace EntityFrameworkLab
                 TextBox4.Text = blProduct.Cantidad_Inventario.ToString();
             }
 
+        }
+
+        protected void BtnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuProductos.aspx");
         }
     }
 }

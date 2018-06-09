@@ -32,6 +32,11 @@
             <asp:Label ID="lblCantidad" runat="server" Text="Cantidad:" CssClass="label"></asp:Label>     
             &nbsp;
             <asp:TextBox ID="TextBox4" runat="server" CssClass="textBox" ReadOnly="True"></asp:TextBox>
+                            <br />
+                            <br />
+                            <asp:Button ID="btnSalir" runat="server" Text="Regresar" CssClass="menuButton" OnClick="btnSalir_Click"/>
+                            <br />
+                            <br />
         </div>
             <br />
         </form>

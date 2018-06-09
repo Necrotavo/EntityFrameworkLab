@@ -34,6 +34,11 @@
             <asp:TextBox ID="TextBox4" runat="server" CssClass="textBox"></asp:TextBox>
       <br />
                             <asp:Button ID="btnExecute" runat="server" Text="Actualizar" CssClass="menuButton" OnClick="btnExecute_Click"/>
+                            <br />
+                            <br />
+                            <asp:Button ID="BtnSalir" runat="server" Text="Regresar" CssClass="menuButton" OnClick="BtnSalir_Click" />
+                            <br />
+                            <br />
         </div>
             <br />
         </form>

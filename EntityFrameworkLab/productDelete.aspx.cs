@@ -31,7 +31,7 @@ namespace EntityFrameworkLab
             blProduct.selectProductos();
             dropClients.DataSource = blProduct.listaProductos;
             dropClients.DataValueField = "Codigo";
-            dropClients.DataTextField = "Descripcion";
+            dropClients.DataTextField = "Codigo";
             dropClients.DataBind();
             dropClients.Items.Add(new ListItem("Seleccionar"));
             dropClients.SelectedValue = "Seleccionar";
@@ -50,6 +50,11 @@ namespace EntityFrameworkLab
             }
           
 
+        }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MenuProductos.aspx");
         }
     }
 }
