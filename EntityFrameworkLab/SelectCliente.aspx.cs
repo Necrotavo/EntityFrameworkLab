@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using BL;
+using BL;
 
 namespace EntityFrameworkLab
 {
@@ -18,9 +18,21 @@ namespace EntityFrameworkLab
 
             }
             else {
-                //BL_Cliente cliente = new BL_Cliente();
+                loadList();
             }
 
+        }
+
+        protected void loadList()
+        {
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.loadClients();
+            ddlCedulas.DataSource = cliente.listaClientes;//Aqu[i puse el foreach que le dije
+            ddlCedulas.DataValueField = "Cedula";
+            ddlCedulas.DataTextField = "Cedula";
+            ddlCedulas.DataBind();
+            ddlCedulas.Items.Add(new ListItem("Seleccionar"));
+            ddlCedulas.SelectedValue = "Seleccionar";
         }
 
         protected void enableTxtBox(Boolean value)
@@ -33,7 +45,17 @@ namespace EntityFrameworkLab
 
         protected void ddlCedulas_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.Cedula = ddlCedulas.SelectedValue;
+            cliente.loadClient();
+            txtName.Text = cliente.Nombre;
+            txtLastName.Text = cliente.Apellido;
+            txtMail.Text = cliente.Correo;
+            txtTelefono.Text = cliente.Telefono;
+            //if (!cliente.hasEmpty())
+            //{
+            //    enableTxtBox(true);
+            //}
         }
     }
 }
