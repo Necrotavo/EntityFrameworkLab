@@ -20,7 +20,7 @@
             <br />
             <asp:Label ID="Label1" runat="server" Text="Consultar" CssClass="label"></asp:Label>
             <br />
-            <asp:DropDownList ID="dropClients" runat="server" CssClass="menuButton"></asp:DropDownList>
+            <asp:DropDownList ID="dropClients" runat="server" CssClass="menuButton" AutoPostBack="True" OnSelectedIndexChanged="dropClients_SelectedIndexChanged"></asp:DropDownList>
         </div>
                         <div class="column">
             <asp:Label ID="lblCod" runat="server" Text="Codigo:" CssClass="label"></asp:Label>

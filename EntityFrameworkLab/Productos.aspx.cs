@@ -25,7 +25,10 @@ namespace EntityFrameworkLab
                 dropClients.DataSource = blProduct.listaProductos;
                 dropClients.DataValueField = "Codigo";
                 dropClients.DataTextField = "Descripcion";
+
                 dropClients.DataBind();
+                dropClients.Items.Add(new ListItem("Seleccionar"));
+                dropClients.SelectedValue = "Seleccionar";
                 ViewState["ListaP"] = blProduct.listaProductos;
             }
         }
@@ -125,6 +128,32 @@ namespace EntityFrameworkLab
                 }
             }
 
+        }
+
+        protected void dropClients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dropClients.SelectedValue != "Seleccionar")
+            {
+                TextBox1.Enabled = false;
+                TextBox2.Enabled = false;
+                TextBox3.Enabled = false;
+                TextBox4.Enabled = false;
+                blProduct.Codigo = dropClients.SelectedItem.Value;
+                blProduct.selectAProduct();
+                TextBox1.Text = blProduct.Codigo;
+                TextBox2.Text = blProduct.Descripcion;
+                TextBox3.Text = blProduct.Precio.ToString();
+                TextBox4.Text = blProduct.Cantidad_Inventario.ToString();
+
+            }
+            else
+            {
+                TextBox1.Enabled = true;
+                TextBox2.Enabled = true;
+                TextBox3.Enabled = true;
+                TextBox4.Enabled = true;
+                clearBoxes();
+            }
         }
     }
 }
