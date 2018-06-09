@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateClient.aspx.cs" Inherits="EntityFrameworkLab.UpdateClient" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SelectCliente.aspx.cs" Inherits="EntityFrameworkLab.SelectCliente" %>
 
 <!DOCTYPE html>
 
@@ -19,7 +19,8 @@
                             <br />
                             <asp:Label ID="lblCed" runat="server" Text="Cedula:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:TextBox ID="txtCed" runat="server" CssClass="textBox" OnTextChanged="txtCed_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:DropDownList ID="ddlCedulas" runat="server" AutoPostBack="True" Height="16px" OnSelectedIndexChanged="ddlCedulas_SelectedIndexChanged" Width="173px">
+                            </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblName" runat="server" Text="Nombre:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
@@ -38,13 +39,9 @@
                             <asp:TextBox ID="txtTelefono" runat="server" CssClass="textBox"></asp:TextBox>
                             <br />
                             <br />
-                            <br />
-                            <asp:Button ID="btnUpdate" runat="server" Text="Modificar" CssClass="menuButton" OnClick="btnUpdate_Click"/>
-                            <br />
-                            <br />
         </div>
             <br />
         </form>
     </div>
-</body> 
+</body>
 </html>

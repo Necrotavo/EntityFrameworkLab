@@ -60,11 +60,13 @@
   <ItemGroup>
     <Content Include="Background.jpg" />
     <Content Include="AddClient.aspx" />
+    <Content Include="DeleteCliente.aspx" />
     <Content Include="Facturas.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="MenuClientes.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="Reportes.aspx" />
+    <Content Include="SelectCliente.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="UpdateClient.aspx" />
     <Content Include="Web.config" />
@@ -77,6 +79,13 @@
     </Compile>
     <Compile Include="AddClient.aspx.designer.cs">
       <DependentUpon>AddClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteCliente.aspx.cs">
+      <DependentUpon>DeleteCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteCliente.aspx.designer.cs">
+      <DependentUpon>DeleteCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Facturas.aspx.cs">
       <DependentUpon>Facturas.aspx</DependentUpon>
@@ -113,6 +122,13 @@
     </Compile>
     <Compile Include="Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SelectCliente.aspx.cs">
+      <DependentUpon>SelectCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SelectCliente.aspx.designer.cs">
+      <DependentUpon>SelectCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpdateClient.aspx.cs">
       <DependentUpon>UpdateClient.aspx</DependentUpon>
