@@ -32,7 +32,8 @@ Public Class BL_Cliente
         Dim tocliente As New TO_Cliente()
         tocliente.Cedula = Me.Cedula
         Dim daoClients As New DAO_Clientes()
-        daoClients.deleteClient(tocliente)
+        daoClients.selectACliente(tocliente)
+        igualarBLaTO(tocliente)
 
     End Sub
 
@@ -67,4 +68,18 @@ Public Class BL_Cliente
         Me.Correo = tocliente.Correo
         Me.Telefono = tocliente.telefono
     End Sub
+
+    Public Function hasEmpty() As Boolean
+        If Me.Cedula <> Nothing Or Me.Nombre <> Nothing Or Me.Apellido <> Nothing Or
+            Me.Correo <> Nothing Or Me.Telefono <> Nothing Then
+
+            If Me.Cedula.Trim() <> "" Or Me.Nombre.Trim() <> "" Or Me.Apellido.Trim() <> "" Or
+                Me.Correo.Trim() <> "" Or Me.Telefono.Trim() <> "" Then
+
+                Return True
+            End If
+        Else
+        End If
+        Return False
+    End Function
 End Class

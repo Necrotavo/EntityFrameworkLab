@@ -22,7 +22,8 @@ namespace EntityFrameworkLab
             cliente.Nombre = txtName.Text;
             cliente.Correo = txtMail.Text;
             cliente.Telefono = txtTelefono.Text;
-            cliente.insertClient();
+            cliente.Apellido = txtLastName.Text;
+            cliente.modifyClient();
         }
 
         protected void enableTxtBox(Boolean value) {

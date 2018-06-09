@@ -50,8 +50,11 @@ namespace EntityFrameworkLab
             txtLastName.Text = cliente.Apellido;
             txtMail.Text = cliente.Correo;
             txtTelefono.Text = cliente.Telefono;
+            if (!cliente.hasEmpty())
+            {
+                enableTxtBox(true);
+            }
         }
-        
 
     }
 }
