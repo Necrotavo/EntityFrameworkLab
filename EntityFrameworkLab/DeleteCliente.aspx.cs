@@ -30,7 +30,10 @@ namespace EntityFrameworkLab
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.Cedula = ddlClientes.SelectedValue;
+            cliente.deleteClient();
+            clearTxtBox();
         }
 
         protected void enableTxtBox(Boolean value)
@@ -39,6 +42,14 @@ namespace EntityFrameworkLab
             txtLastName.Enabled = value;
             txtMail.Enabled = value;
             txtTelefono.Enabled = value;
+        }
+
+        protected void clearTxtBox()
+        {
+            txtName.Text = "";
+            txtLastName.Text = "";
+            txtMail.Text = "";
+            txtTelefono.Text = "";
         }
 
         protected void ddlClientes_SelectedIndexChanged(object sender, EventArgs e)
