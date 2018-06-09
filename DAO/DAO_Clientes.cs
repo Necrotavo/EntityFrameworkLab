@@ -27,15 +27,14 @@ namespace DAO
         {
             //var clientes = entidades.CLIENTEs.Select(c => c);//NO SE SI EL QUERY ESTA BIEN
             var clientes = from r in entidades.CLIENTE select r;
-            TO_Cliente tempClient = new TO_Cliente();
             foreach (var item in clientes)
             {
+                TO_Cliente tempClient = new TO_Cliente();
                 tempClient.Cedula = item.Cedula;
                 tempClient.Nombre = item.Nombre;
                 tempClient.Apellido = item.Apellido;
                 tempClient.Correo = item.Correo;
                 tempClient.Telefono = item.Telefono;
-                list.listaClientes = new List<TO_Cliente>();
                 list.listaClientes.Add(tempClient);
             }
         }

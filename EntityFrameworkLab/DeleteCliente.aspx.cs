@@ -12,22 +12,29 @@ namespace EntityFrameworkLab
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BL_Cliente cliente = new BL_Cliente();
+            
             enableTxtBox(false);
             if (IsPostBack)
             {
-                cliente.listaClientes = (List<BL_Cliente>)ViewState["ListaCedula"];
+                if ((Boolean)ViewState["HeEliminado"]) {
+                    loadList();
+                }
             }
             else {
-                cliente.loadClients();
-                ddlClientes.DataSource = cliente.listaClientes;//Aqu[i puse el foreach que le dije
-                ddlClientes.DataValueField = "Cedula";
-                ddlClientes.DataTextField = "Cedula";
-                ddlClientes.DataBind();
-                ddlClientes.Items.Add(new ListItem("Seleccionar"));
-                ddlClientes.SelectedValue = "Seleccionar";
-                ViewState["ListaCedula"] = ddlClientes.DataSource;
+                loadList();
             }
+        }
+
+        protected void loadList() {
+            BL_Cliente cliente = new BL_Cliente();
+            cliente.loadClients();
+            ddlClientes.DataSource = cliente.listaClientes;//Aqu[i puse el foreach que le dije
+            ddlClientes.DataValueField = "Cedula";
+            ddlClientes.DataTextField = "Cedula";
+            ddlClientes.DataBind();
+            ddlClientes.Items.Add(new ListItem("Seleccionar"));
+            ddlClientes.SelectedValue = "Seleccionar";
+            ViewState["HeEliminado"] = false;
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -35,6 +42,8 @@ namespace EntityFrameworkLab
             BL_Cliente cliente = new BL_Cliente();
             cliente.Cedula = ddlClientes.SelectedValue;
             cliente.deleteClient();
+            loadList();
+            ViewState["HeEliminado"] = true;
             clearTxtBox();
         }
 
@@ -63,10 +72,11 @@ namespace EntityFrameworkLab
             txtLastName.Text = cliente.Apellido;
             txtMail.Text = cliente.Correo;
             txtTelefono.Text = cliente.Telefono;
-            if (!cliente.hasEmpty())
-            {
-                enableTxtBox(true);
-            }
+            //if (!cliente.hasEmpty())
+            //{
+            //    enableTxtBox(true);
+            //}
+            ViewState["HeEliminado"] = false;
         }
 
     }

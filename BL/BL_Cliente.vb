@@ -36,17 +36,18 @@ Public Class BL_Cliente
             Me.Apellido = ""
             Me.Correo = ""
             Me.Telefono = ""
+        Else
+            Dim tocliente As New TO_Cliente()
+            tocliente.Cedula = Me.Cedula
+            Dim daoClients As New DAO_Clientes()
+            daoClients.selectACliente(tocliente)
+            igualarBLaTO(tocliente)
         End If
-        Dim tocliente As New TO_Cliente()
-        tocliente.Cedula = Me.Cedula
-        Dim daoClients As New DAO_Clientes()
-        daoClients.selectACliente(tocliente)
-        igualarBLaTO(tocliente)
-
     End Sub
 
     Public Sub loadClients()
         Dim toclientlist As New TO_ClienteList()
+        toclientlist.listaClientes = New List(Of TO_Cliente)
         Dim daoClientes As New DAO_Clientes()
         daoClientes.selectClientes(toclientlist)
         listaClientes = New List(Of BL_Cliente)
