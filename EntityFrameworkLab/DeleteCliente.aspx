@@ -19,7 +19,7 @@
                             <br />
                             <asp:Label ID="lblCed" runat="server" Text="Cedula:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" Height="36px" Width="170px" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlClientes" runat="server" AutoPostBack="True" Height="36px" Width="170px" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged" CssClass="menuButton">
                             </asp:DropDownList>
                             <br />
                             <asp:Label ID="lblName" runat="server" Text="Nombre:" CssClass="label"></asp:Label>

@@ -64,7 +64,11 @@
     <Content Include="Facturas.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="MenuClientes.aspx" />
-    <Content Include="Productos.aspx" />
+    <Content Include="MenuProductos.aspx" />
+    <Content Include="productDelete.aspx" />
+    <Content Include="productInsert.aspx" />
+    <Content Include="productUpdate.aspx" />
+    <Content Include="productVer.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="SelectCliente.aspx" />
     <Content Include="StyleSheet1.css" />
@@ -108,12 +112,40 @@
     <Compile Include="MenuClientes.aspx.designer.cs">
       <DependentUpon>MenuClientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Productos.aspx.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
+    <Compile Include="MenuProductos.aspx.cs">
+      <DependentUpon>MenuProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Productos.aspx.designer.cs">
-      <DependentUpon>Productos.aspx</DependentUpon>
+    <Compile Include="MenuProductos.aspx.designer.cs">
+      <DependentUpon>MenuProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="productDelete.aspx.cs">
+      <DependentUpon>productDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="productDelete.aspx.designer.cs">
+      <DependentUpon>productDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="productInsert.aspx.cs">
+      <DependentUpon>productInsert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="productInsert.aspx.designer.cs">
+      <DependentUpon>productInsert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="productUpdate.aspx.cs">
+      <DependentUpon>productUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="productUpdate.aspx.designer.cs">
+      <DependentUpon>productUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="productVer.aspx.cs">
+      <DependentUpon>productVer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="productVer.aspx.designer.cs">
+      <DependentUpon>productVer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes.aspx.cs">

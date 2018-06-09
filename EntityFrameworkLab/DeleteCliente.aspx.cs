@@ -20,7 +20,7 @@ namespace EntityFrameworkLab
             }
             else {
                 cliente.loadClients();
-                ddlClientes.DataSource = cliente.listaClientes;//Aqu[i puse el foreach que le dije
+                ddlClientes.DataSource = cliente.listaClientes;
                 ddlClientes.DataValueField = "Cedula";
                 ddlClientes.DataTextField = "Cedula";
                 ddlClientes.DataBind();

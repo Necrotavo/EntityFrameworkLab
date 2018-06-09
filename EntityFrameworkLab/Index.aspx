@@ -18,7 +18,7 @@
 <br />
         <asp:Button ID="btnFacturas" runat="server" Text="Facturas" CssClass="menuButton"/>
 <br />
-        <asp:Button ID="btnReportes" runat="server" Text="Reportes"  CssClass="menuButton"/>
+        <asp:Button ID="btnReportes" runat="server" Text="Reportes"  CssClass="menuButton" OnClick="btnReportes_Click"/>
 <br />
 
     </div>
