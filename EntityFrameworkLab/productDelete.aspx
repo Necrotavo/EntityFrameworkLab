@@ -18,7 +18,7 @@
                             <br />
             <asp:Label ID="lblCod" runat="server" Text="Codigo:" CssClass="label"></asp:Label>
             &nbsp;
-            <asp:DropDownList ID="dropClients" runat="server" CssClass="menuButton" AutoPostBack="True" ></asp:DropDownList>
+            <asp:DropDownList ID="dropClients" runat="server" CssClass="menuButton"></asp:DropDownList>
             <br />  
       <br />
                             <asp:Button ID="btnExecute" runat="server" Text="Eliminar" CssClass="menuButton" OnClick="btnExecute_Click"/>
