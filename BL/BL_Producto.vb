@@ -31,7 +31,7 @@ Public Class BL_Producto
         Dim toProduct As New TO_Producto
         toProduct = igualarTOProducto()
         Dim daoProducto As New DAO_Productos
-        daoProducto.selectAProduct(toProduct)
+        daoProducto.insertProduct(toProduct)
     End Sub
 
     Public Sub modifyProduct()

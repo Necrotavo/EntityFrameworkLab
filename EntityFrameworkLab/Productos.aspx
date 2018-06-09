@@ -36,7 +36,7 @@
             &nbsp;
             <asp:TextBox ID="TextBox4" runat="server" CssClass="textBox"></asp:TextBox>
       <br />
-                            <asp:Button ID="btnExecute" runat="server" Text="Ejecutar" CssClass="menuButton"/>
+                            <asp:Button ID="btnExecute" runat="server" Text="Ejecutar" CssClass="menuButton" OnClick="btnExecute_Click"/>
        
         </div>
 
