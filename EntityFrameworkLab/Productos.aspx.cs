@@ -10,18 +10,21 @@ namespace EntityFrameworkLab
 {
     public partial class Productos : System.Web.UI.Page
     {
+        
         BL_Producto blProduct = new BL_Producto();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (IsPostBack)
             {
                 blProduct.listaProductos = (List<BL_Producto>)ViewState["ListaP"];
             }
             else
             {
-                blProduct.selectClientes();
+                blProduct.selectProductos();
                 dropClients.DataSource = blProduct.listaProductos;
+                dropClients.DataValueField = "Codigo";
+                dropClients.DataTextField = "Descripcion";
                 dropClients.DataBind();
                 ViewState["ListaP"] = blProduct.listaProductos;
             }

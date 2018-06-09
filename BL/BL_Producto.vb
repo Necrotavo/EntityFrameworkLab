@@ -1,13 +1,14 @@
 ﻿Imports [TO]
 Imports DAO
+<Serializable>
 Public Class BL_Producto
     Property Codigo As String
     Property Descripcion As String
     Property Precio As Int16
     Property Cantidad_Inventario As Int16
-    Property listaProductos As List(Of BL_Producto)
+    Property listaProductos As New List(Of BL_Producto)
 
-    Public Sub selectClientes()
+    Public Sub selectProductos()
         Dim toProductList As New TO_ProductList
         toProductList.toProductList = New List(Of TO_Producto)
         Dim daoProducto As New DAO_Productos

@@ -12,7 +12,7 @@ namespace DAO
         LAB_EF entidades = new LAB_EF();
 
         public void selectProducts(TO_ProductList toProductoList)
-        {//////////////////////
+        {
             var products = from r in entidades.PRODUCTO select r;
             foreach (var producto in products)
             {
