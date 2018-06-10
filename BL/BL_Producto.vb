@@ -56,7 +56,8 @@ Public Class BL_Producto
         Me.Codigo = toProducto.Codigo
         Me.Descripcion = toProducto.Descripcion
         Me.Precio = toProducto.Precio
-        Me.Cantidad_Inventario = Convert.ToInt16(toProducto.Cantidad_Inventario)
+        Me.Cantidad_Inventario = toProducto.Cantidad_Inventario
+        Me.Cantidad_En_Factura = toProducto.Cantidad_En_Factura
     End Sub
 
     Public Function igualarTOProducto() As TO_Producto
@@ -64,7 +65,8 @@ Public Class BL_Producto
         toProducto.Codigo = Me.Codigo
         toProducto.Descripcion = Me.Descripcion
         toProducto.Precio = Me.Precio
-        toProducto.Cantidad_Inventario = Me.Cantidad_Inventario.ToString()
+        toProducto.Cantidad_Inventario = Me.Cantidad_Inventario
+        toProducto.Cantidad_En_Factura = Me.Cantidad_En_Factura
         Return toProducto
     End Function
 End Class
