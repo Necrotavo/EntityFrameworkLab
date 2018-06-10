@@ -11,14 +11,16 @@ namespace DAO
     {
         LAB_EF entidades = new LAB_EF();
 
-        public void selectFromClient(TOReporte report) {
+        public void selectFromClient(TOReporte report)
+        {
             var facturas = from r in entidades.FACTURA
                            where ((r.Fecha >= report.desde && r.Fecha <= report.hasta) && r.Cedula_Cliente == report.client)
                            select r;
 
             if (facturas.Count() > 0)
             {
-                foreach (FACTURA daoFactura in facturas) {
+                foreach (FACTURA daoFactura in facturas)
+                {
                     TO_Factura toFactura = new TO_Factura();
                     toFactura.Codigo = daoFactura.Codigo;
                     report.listaFacturas.Add(toFactura);
@@ -43,11 +45,12 @@ namespace DAO
             }
 
             entidades.SaveChanges();
-            
+
 
         }
 
-        public void selectAFactura(TO_Factura toFactura) {
+        public void selectAFactura(TO_Factura toFactura)
+        {
             var factura = from r in entidades.FACTURA where r.Codigo == toFactura.Codigo select r;
             if (factura.Count() > 0)
             {
@@ -57,12 +60,14 @@ namespace DAO
                 var detallesCompra = from r in entidades.DETALLE_FACTURA where r.Codigo_Factura == toFactura.Codigo select r;
                 if (detallesCompra.Count() > 0)
                 {
-                    foreach (DETALLE_FACTURA detalleFactura in detallesCompra) {
+                    foreach (DETALLE_FACTURA detalleFactura in detallesCompra)
+                    {
                         TO_Producto toProducto = new TO_Producto();
                         toProducto.Cantidad_En_Factura = Convert.ToInt16(detalleFactura.Cantidad);
 
                         var daoProductos = from r in entidades.PRODUCTO where r.Codigo == detalleFactura.Codigo_Producto select r;
-                        if (daoProductos.Count() > 0) {
+                        if (daoProductos.Count() > 0)
+                        {
                             toProducto.Codigo = daoProductos.First().Codigo;
                             toProducto.Descripcion = daoProductos.First().Descripcion;
                             toProducto.Precio = Convert.ToInt16(daoProductos.First().Precio);
@@ -74,4 +79,5 @@ namespace DAO
             }
         }
 
+    }
 }

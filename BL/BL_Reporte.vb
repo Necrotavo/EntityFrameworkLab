@@ -13,7 +13,7 @@ Public Class BL_Reporte
         report.desde = Me.desde
         report.hasta = Me.hasta
         report.listaFacturas = New List(Of TO_Factura)
-        daoReport.selectFacturasFromClient(report)
+        daoReport.selectFromClient(report)
         For Each element As TO_Factura In report.listaFacturas
             Dim blFact As New BL_Factura
             blFact.Codigo = element.Codigo
