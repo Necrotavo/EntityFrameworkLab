@@ -16,7 +16,7 @@
 <br />
         <asp:Button ID="btnProductos" runat="server" Text="Productos" CssClass="menuButton" OnClick="btnProductos_Click"/>
 <br />
-        <asp:Button ID="btnFacturas" runat="server" Text="Facturas" CssClass="menuButton"/>
+        <asp:Button ID="btnFacturas" runat="server" Text="Facturas" CssClass="menuButton" OnClick="btnFacturas_Click"/>
 <br />
         <asp:Button ID="btnReportes" runat="server" Text="Reportes"  CssClass="menuButton" OnClick="btnReportes_Click"/>
 <br />

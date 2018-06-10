@@ -10,37 +10,50 @@
 <body>
     <form id="form1" runat="server">
     <div class="column">
-        <asp:Label ID="Label1" runat="server" Text="Clientes" CssClass="label"></asp:Label>
+        <asp:Label ID="lblCliente" runat="server" Text="Clientes" CssClass="label"></asp:Label>
         <br />
-        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="menuButton"></asp:DropDownList>
+        <asp:DropDownList ID="ddlClientes" runat="server" CssClass="menuButton" AutoPostBack="True" OnSelectedIndexChanged="ddlClientes_SelectedIndexChanged"></asp:DropDownList>
+        <br />
+        <br />
+        <asp:Label ID="lblNombre" runat="server" Text="Nombre:" CssClass="label"></asp:Label>
+        &nbsp;&nbsp;
+        <asp:TextBox ID="txtNombreCliente" runat="server" CssClass="textBox" Width="256px"></asp:TextBox>
+        <br />
         <div style="border-bottom: solid black">
         </div>
         <br />
-        <asp:Label ID="Label2" runat="server" Text="Producto" CssClass="label"></asp:Label>
+        <asp:Label ID="lblProducto" runat="server" Text="Producto" CssClass="label"></asp:Label>
         <br />
-        <asp:DropDownList ID="DropDownList2" runat="server" CssClass="menuButton"></asp:DropDownList>
+        <asp:DropDownList ID="ddlProductos" runat="server" CssClass="menuButton" AutoPostBack="True" OnSelectedIndexChanged="ddlProductos_SelectedIndexChanged"></asp:DropDownList>
         <br />
-        <asp:Label ID="Label3" runat="server" Text="Disponibles: " CssClass="label"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server" CssClass="smallBox"></asp:TextBox>
+        <asp:Label ID="lblDisponibles" runat="server" Text="Disponibles: " CssClass="label"></asp:Label>
+        <asp:TextBox ID="txtCantDisponibles" runat="server" CssClass="smallBox"></asp:TextBox>
         <br />
-        <asp:Label ID="Label4" runat="server" Text="Cantidad a agregar: " CssClass="label"></asp:Label>
-        <asp:TextBox ID="TextBox2" runat="server" CssClass="smallBox"></asp:TextBox>
+&nbsp;
+        <asp:Label ID="lblPrecio" runat="server" Text="Precio:" CssClass="label"></asp:Label>
+        &nbsp;&nbsp;
+        <asp:TextBox ID="txtPrecio" runat="server" CssClass="smallBox"></asp:TextBox>
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Add" CssClass="menuButton"/>
+        <asp:Label ID="lblCantidad" runat="server" Text="Cantidad a agregar: " CssClass="label"></asp:Label>
+        <asp:TextBox ID="txtCantComprar" runat="server" CssClass="smallBox"></asp:TextBox>
+        <br />
+        <asp:Button ID="btnAdd" runat="server" Text="AgregarProducto" CssClass="menuButton" OnClick="btnAdd_Click"/>
 
     </div>
 
     <div class="column" style="text-align: center">
-    <asp:Label ID="Label5" runat="server" Text="FACTURA" CssClass="label"></asp:Label>
+    <asp:Label ID="lblFactura" runat="server" Text="FACTURA" CssClass="label"></asp:Label>
         <br />
-    <asp:ListBox ID="ListBox1" runat="server" CssClass="textBox"></asp:ListBox>
+        <br />&nbsp;&nbsp;<asp:GridView ID="dgvDetalleFactura" runat="server" CssClass="smallBox" HorizontalAlign="Center">
+        </asp:GridView>
+        &nbsp;<br />
         <br />
-        <asp:Label ID="Label6" runat="server" Text="Total: " CssClass="label"></asp:Label>
-        <asp:TextBox ID="TextBox3" runat="server" CssClass="smallBox"></asp:TextBox>
+        <asp:Label ID="lblTotal" runat="server" Text="Total: " CssClass="label"></asp:Label>
+        <asp:TextBox ID="txtTotal" runat="server" CssClass="smallBox"></asp:TextBox>
         <br />
-        <asp:Button ID="Button2" runat="server" Text="Remover producto" CssClass="menuButton"/>
+        <asp:Button ID="btnRemoveFromList" runat="server" Text="Remover producto" CssClass="menuButton"/>
         <br />
-        <asp:Button ID="Button3" runat="server" Text="Guardar" CssClass="menuButton"/>
+        <asp:Button ID="btnAddFactura" runat="server" Text="Guardar" CssClass="menuButton"/>
     </div>
     </form>
 </body>

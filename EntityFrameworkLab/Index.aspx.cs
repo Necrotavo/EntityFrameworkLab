@@ -28,5 +28,10 @@ namespace EntityFrameworkLab
         {
             Response.Redirect("Reportes.aspx");
         }
+
+        protected void btnFacturas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Facturas.aspx");
+        }
     }
 }
