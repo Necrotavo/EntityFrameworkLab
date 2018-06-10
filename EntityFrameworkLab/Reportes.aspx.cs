@@ -56,9 +56,32 @@ namespace EntityFrameworkLab
         {
             if (ddlClientes.Text != "Seleccionar")
             {
-
-                
+                BL_Reporte facturas = new BL_Reporte();
+                facturas.client = ddlClientes.SelectedValue;
+                facturas.desde = Calendar1.SelectedDate;
+                facturas.hasta = Calendar2.SelectedDate;
+                facturas.getFacturasConRango();
+                llenarFacturaDrop(facturas.listaFacturas);
             }
+            DropDownList2.Enabled = true;
+        }
+
+        private void llenarFacturaDrop(List<BL_Factura> list)
+        {
+
+                DropDownList2.DataSource = list;
+                DropDownList2.DataValueField = "Codigo";
+                DropDownList2.DataTextField = "Codigo";
+                DropDownList2.DataBind();
+                DropDownList2.Items.Add(new ListItem("Seleccionar"));
+                DropDownList2.SelectedValue = "Seleccionar";
+
+
+        }
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Esto con un autopostback carga los datos de la factura en el grid.
+            //tambien requiere calcular el total de la factura y luego llenar el textbox del total.
         }
     }
 }

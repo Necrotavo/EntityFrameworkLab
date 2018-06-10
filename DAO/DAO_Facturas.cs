@@ -11,10 +11,9 @@ namespace DAO
     {
         LAB_EF entidades = new LAB_EF();
 
-        public void selectFromClient(TO_FacturaList toFacturaList, DateTime dateOne, DateTime dateTwo, TO_Cliente tocliente) {
-            //(c => DateTaime.Now)
+        public void selectFromClient(TOReporte report) {
             var facturas = from r in entidades.FACTURA
-                           where ((r.Fecha >= dateOne && r.Fecha <= dateTwo) && r.Cedula_Cliente == tocliente.Cedula)
+                           where ((r.Fecha >= report.desde && r.Fecha <= report.hasta) && r.Cedula_Cliente == report.client)
                            select r;
 
             if (facturas.Count() > 0)
@@ -22,7 +21,7 @@ namespace DAO
                 foreach (FACTURA daoFactura in facturas) {
                     TO_Factura toFactura = new TO_Factura();
                     toFactura.Codigo = daoFactura.Codigo;
-                    toFacturaList.toFacturaList.Add(toFactura);
+                    report.listaFacturas.Add(toFactura);
                 }
             }
         }
@@ -46,40 +45,6 @@ namespace DAO
             entidades.SaveChanges();
             
 
-        }
-
-        public void selectFacturasConRango(TOReporte listFact)
-        {
-            
-            var factura = from r in entidades.FACTURA where r.Cedula_Cliente == listFact.client.Cedula 
-                          && r.Fecha >= listFact.desde 
-                          && r.Fecha <= listFact.hasta select r;
-            foreach (var item in factura)
-            {
-                TO_Factura facture = new TO_Factura();
-                facture.Codigo = item.Codigo;
-                facture.Fecha = item.Fecha;
-                facture.Cedula_Cliente = item.Cedula_Cliente;
-                facture.lista_Productos = new TO_ProductList();
-                facture.lista_Productos.toProductList = new List<TO_Producto>();
-                foreach (var cosa in item.DETALLE_FACTURA)
-                {
-                    var prod = from p in entidades.PRODUCTO where p.Codigo == cosa.Codigo_Producto select p;
-                    foreach (var producto in prod)
-                    {
-                        TO_Producto pr = new TO_Producto();
-                        pr.Codigo = producto.Codigo;
-                        pr.Cantidad_En_Factura = Convert.ToInt16(cosa.Cantidad);
-                        pr.Cantidad_Inventario = Convert.ToInt16(producto.Cantidad_Inventario);
-                        pr.Descripcion = producto.Descripcion;
-                        pr.Precio = Convert.ToInt16(producto.Precio);
-
-                        facture.lista_Productos.toProductList.Add(pr);
-                    }
-                }
-
-                listFact.listaFacturas.Add(facture);
-            }
         }
 
         public void selectAFactura(TO_Factura toFactura) {
@@ -109,54 +74,4 @@ namespace DAO
             }
         }
 
-        public void selectFromClientDaniel(TOReporte toReporte, DateTime dateOne, DateTime dateTwo, TO_Cliente tocliente)
-        {
-            var facturas = from r in entidades.FACTURA
-                           where ((r.Fecha >= dateOne && r.Fecha <= dateTwo) && r.Cedula_Cliente == tocliente.Cedula)
-                           select r;
-
-            if (facturas.Count() > 0)
-            {
-                foreach (FACTURA daoFactura in facturas)
-                {
-                    TO_Factura toFactura = new TO_Factura();
-                    toFactura.Codigo = daoFactura.Codigo;
-                    toReporte.listaFacturas.Add(toFactura);
-                }
-            }
-        }
-
-        public void selectAFacturaDaniel(TO_Factura toFactura)
-        {
-
-            var facturas = from r in entidades.FACTURA where r.Cedula_Cliente == toFactura.Cedula_Cliente select r;
-            if (facturas.Count() > 0)
-            {
-                TO_Factura facture = new TO_Factura();
-                toFactura.Codigo = facturas.First().Codigo;
-                toFactura.Fecha = facturas.First().Fecha;
-                toFactura.Cedula_Cliente = facturas.First().Cedula_Cliente;
-                toFactura.lista_Productos = new TO_ProductList();
-                toFactura.lista_Productos.toProductList = new List<TO_Producto>();
-
-                var detalles = from r in entidades.DETALLE_FACTURA where r.Codigo_Factura == facturas.First().Codigo select r;
-                foreach (var cosa in detalles)
-                {
-                    var prod = from p in entidades.PRODUCTO where p.Codigo == cosa.Codigo_Producto select p;
-                    foreach (var producto in prod)
-                    {
-                        TO_Producto pr = new TO_Producto();
-                        pr.Codigo = producto.Codigo;
-                        pr.Cantidad_En_Factura = Convert.ToInt16(cosa.Cantidad);
-                        pr.Cantidad_Inventario = Convert.ToInt16(producto.Cantidad_Inventario);
-                        pr.Descripcion = producto.Descripcion;
-                        pr.Precio = Convert.ToInt16(producto.Precio);
-
-                        toFactura.lista_Productos.toProductList.Add(pr);
-                    }
-                }
-            }
-        }
-
-    }
 }

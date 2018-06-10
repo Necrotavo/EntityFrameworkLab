@@ -30,7 +30,7 @@
 
     <div class="column" style="text-align: center">
     <asp:Label ID="Label5" runat="server" Text="Factura" CssClass="label"></asp:Label>
-        <asp:DropDownList ID="DropDownList2" runat="server" CssClass="menuButton" Enabled="False"></asp:DropDownList>
+        <asp:DropDownList ID="DropDownList2" runat="server" CssClass="menuButton" Enabled="False" AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged"></asp:DropDownList>
         <br />
     <asp:GridView ID="GridView1" runat="server"></asp:GridView>
         <br />
