@@ -41,8 +41,6 @@ namespace DAO
                 detalle.Cantidad = item.Cantidad_En_Factura;
                 detalle.Codigo_Factura = factura.Codigo;
                 detalle.Codigo_Producto = item.Codigo;
-                detalle.FACTURA = fact;
-                detalle.PRODUCTO = (PRODUCTO) (from p in entidades.PRODUCTO where p.Codigo == item.Codigo select p).Single();
                 fact.DETALLE_FACTURA.Add(detalle);
             }
             entidades.FACTURA.Add(fact);
