@@ -44,14 +44,17 @@
     <div class="column" style="text-align: center">
     <asp:Label ID="lblFactura" runat="server" Text="FACTURA" CssClass="label"></asp:Label>
         <br />
-        <br />&nbsp;&nbsp;<asp:GridView ID="dgvDetalleFactura" runat="server" CssClass="smallBox" HorizontalAlign="Center">
+        <br />&nbsp;&nbsp;<asp:GridView ID="dgvDetalleFactura" runat="server" CssClass="smallBox" HorizontalAlign="Center" SelectedIndex="0">
+            <SelectedRowStyle BorderStyle="Dotted" BackColor="#8F7B52" />
         </asp:GridView>
-        &nbsp;<br />
+        &nbsp;<asp:Button ID="btnUp" runat="server" Text="^" CssClass="menuButton" OnClick="btnUp_Click"/>
+        <asp:Button ID="btnDown" runat="server" Text="v" CssClass="menuButton" OnClick="btnDown_Click"/>
+        <br />
         <br />
         <asp:Label ID="lblTotal" runat="server" Text="Total: " CssClass="label"></asp:Label>
         <asp:TextBox ID="txtTotal" runat="server" CssClass="smallBox"></asp:TextBox>
         <br />
-        <asp:Button ID="btnRemoveFromList" runat="server" Text="Remover producto" CssClass="menuButton"/>
+        <asp:Button ID="btnRemoveFromList" runat="server" Text="Remover producto" CssClass="menuButton" OnClick="btnRemoveFromList_Click"/>
         <br />
         <asp:Button ID="btnAddFactura" runat="server" Text="Guardar" CssClass="menuButton"/>
     </div>

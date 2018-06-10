@@ -11,22 +11,30 @@ namespace EntityFrameworkLab
 {
     public partial class Facturas : System.Web.UI.Page
     {
+
         private BL_Producto blProductoActual;
         DataTable dt;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
             {
                 blProductoActual = (BL_Producto)ViewState["ProductoActual"];
                 dt = (DataTable)ViewState["DataTable"];
+
+
             }
             else
             {
                 loadClientList();
                 loadProductList();
                 createDataTable();
+                dt = new DataTable();
+                dt.Columns.Add("Codigo");
+                dt.Columns.Add("Precio");
+                dt.Columns.Add("Cantidad");
+                dt.Columns.Add("Total_Producto");
                 ViewState["DataTable"] = dt;
-                ViewState["DataTable"] = blProductoActual;
             }
             refreshGrid();
         }
@@ -34,6 +42,18 @@ namespace EntityFrameworkLab
         protected void refreshGrid() {
             dgvDetalleFactura.DataSource = dt;
             dgvDetalleFactura.DataBind();
+        }
+
+        protected int calcularTotal()
+        {
+            int sum = 0;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dgvDetalleFactura.Rows[i].Cells[dt.Columns.IndexOf("Total_Producto")].Text);
+            }
+
+            return sum;
         }
 
         protected void createDataTable() {
@@ -106,14 +126,54 @@ namespace EntityFrameworkLab
             {
                 if (Convert.ToInt16(txtCantComprar.Text.Trim()) > 0)
                 {
-                    dt.Rows.Add(blProductoActual.Codigo, blProductoActual.Precio.ToString(), txtCantComprar.Text, (blProductoActual.Precio * Convert.ToInt16(txtCantComprar.Text.Trim())).ToString());
+                    DataRow row = dt.NewRow();
+                    row["Codigo"] = blProductoActual.Codigo;
+                    row["Precio"] = blProductoActual.Precio.ToString();
+                    row["Cantidad"] = txtCantComprar.Text;
+                    row["Total_Producto"] = (blProductoActual.Precio * Convert.ToInt16(txtCantComprar.Text.Trim())).ToString();
+                    dt.Rows.Add(row);
                     refreshGrid();
+
                 }
             }
             ViewState["DataTable"] = dt;
             ViewState["ProductoActual"] = blProductoActual;
+            txtTotal.Text = calcularTotal().ToString();
         }
 
+        protected void btnUp_Click(object sender, EventArgs e)
+        {
+            changeSelectedRow(true);
+        }
+        protected void changeSelectedRow(Boolean upDown)
+        {
+            if (upDown)
+            {
+                if (dgvDetalleFactura.SelectedIndex > 0)
+                {
+                    dgvDetalleFactura.SelectedIndex--;
+                }
+                
+            }
+            else
+            {
+                if (dgvDetalleFactura.SelectedIndex < dgvDetalleFactura.Rows.Count - 1)
+                {
+                    dgvDetalleFactura.SelectedIndex++;
+                }
 
+            }
+        }
+
+        protected void btnDown_Click(object sender, EventArgs e)
+        {
+            changeSelectedRow(false);
+        }
+
+        protected void btnRemoveFromList_Click(object sender, EventArgs e)
+        {
+            dt.Rows.RemoveAt(dgvDetalleFactura.SelectedIndex);
+            refreshGrid();
+        }
     }
 }
