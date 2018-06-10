@@ -44,6 +44,8 @@
     <div class="column" style="text-align: center">
     <asp:Label ID="lblFactura" runat="server" Text="FACTURA" CssClass="label"></asp:Label>
         <br />
+        <asp:Label ID="Label1" runat="server" Text="Cod " CssClass="label"></asp:Label>
+        <asp:TextBox ID="txtCodigo" runat="server" CssClass="textBox"></asp:TextBox>
         <br />&nbsp;&nbsp;<asp:GridView ID="dgvDetalleFactura" runat="server" CssClass="smallBox" HorizontalAlign="Center" SelectedIndex="0">
             <SelectedRowStyle BorderStyle="Dotted" BackColor="#8F7B52" />
         </asp:GridView>
@@ -56,7 +58,7 @@
         <br />
         <asp:Button ID="btnRemoveFromList" runat="server" Text="Remover producto" CssClass="menuButton" OnClick="btnRemoveFromList_Click"/>
         <br />
-        <asp:Button ID="btnAddFactura" runat="server" Text="Guardar" CssClass="menuButton"/>
+        <asp:Button ID="btnAddFactura" runat="server" Text="Guardar" CssClass="menuButton" OnClick="btnAddFactura_Click"/>
     </div>
     </form>
 </body>

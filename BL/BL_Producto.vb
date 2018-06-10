@@ -6,6 +6,7 @@ Public Class BL_Producto
     Property Descripcion As String
     Property Precio As Int16
     Property Cantidad_Inventario As Int16
+    Property Cantidad_En_Factura As Int16
     Property listaProductos As New List(Of BL_Producto)
 
     Public Sub selectProductos()

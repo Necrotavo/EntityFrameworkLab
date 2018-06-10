@@ -14,6 +14,7 @@ Public Class BL_Factura
         For Each producto As BL_Producto In Me.ListaProductos
             Dim toProdAux As New TO_Producto()
             toProdAux = producto.igualarTOProducto()
+            'Hay un problema aqui
             toFactura.lista_Productos.toProductList.Add(toProdAux)
         Next
         Dim daoFactura As New DAO_Facturas()
