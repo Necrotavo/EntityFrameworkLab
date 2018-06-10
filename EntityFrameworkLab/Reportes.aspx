@@ -32,7 +32,7 @@
     <asp:Label ID="Label5" runat="server" Text="Factura" CssClass="label"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" CssClass="menuButton" Enabled="False"></asp:DropDownList>
         <br />
-    <asp:ListBox ID="ListBox1" runat="server" CssClass="textBox" Enabled="False"></asp:ListBox>
+    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
         <br />
         <asp:Label ID="Label6" runat="server" Text="Total: " CssClass="label"></asp:Label>
         <asp:TextBox ID="TextBox3" runat="server" CssClass="smallBox" Enabled="False"></asp:TextBox>

@@ -67,6 +67,7 @@
     <Compile Include="BL_Cliente.vb" />
     <Compile Include="BL_Factura.vb" />
     <Compile Include="BL_Producto.vb" />
+    <Compile Include="BL_Reporte.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

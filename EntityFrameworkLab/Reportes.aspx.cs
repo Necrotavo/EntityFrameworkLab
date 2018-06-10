@@ -54,7 +54,11 @@ namespace EntityFrameworkLab
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            if (ddlClientes.Text != "Seleccionar")
+            {
 
+                
+            }
         }
     }
 }

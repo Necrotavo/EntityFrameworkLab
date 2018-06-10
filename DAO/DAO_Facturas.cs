@@ -48,6 +48,40 @@ namespace DAO
 
         }
 
+        public void selectFacturasConRango(TOReporte listFact)
+        {
+            
+            var factura = from r in entidades.FACTURA where r.Cedula_Cliente == listFact.client.Cedula 
+                          && r.Fecha >= listFact.desde 
+                          && r.Fecha <= listFact.hasta select r;
+            foreach (var item in factura)
+            {
+                TO_Factura facture = new TO_Factura();
+                facture.Codigo = item.Codigo;
+                facture.Fecha = item.Fecha;
+                facture.Cedula_Cliente = item.Cedula_Cliente;
+                facture.lista_Productos = new TO_ProductList();
+                facture.lista_Productos.toProductList = new List<TO_Producto>();
+                foreach (var cosa in item.DETALLE_FACTURA)
+                {
+                    var prod = from p in entidades.PRODUCTO where p.Codigo == cosa.Codigo_Producto select p;
+                    foreach (var producto in prod)
+                    {
+                        TO_Producto pr = new TO_Producto();
+                        pr.Codigo = producto.Codigo;
+                        pr.Cantidad_En_Factura = Convert.ToInt16(cosa.Cantidad);
+                        pr.Cantidad_Inventario = Convert.ToInt16(producto.Cantidad_Inventario);
+                        pr.Descripcion = producto.Descripcion;
+                        pr.Precio = Convert.ToInt16(producto.Precio);
+
+                        facture.lista_Productos.toProductList.Add(pr);
+                    }
+                }
+
+                listFact.listaFacturas.Add(facture);
+            }
+        }
+
         public void selectAFactura(TO_Factura toFactura) {
             var factura = from r in entidades.FACTURA where r.Codigo == toFactura.Codigo select r;
             if (factura.Count() > 0)

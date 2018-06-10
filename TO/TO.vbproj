@@ -79,6 +79,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TOReporte.vb" />
     <Compile Include="TO_Cliente.vb" />
     <Compile Include="TO_ClienteList.vb" />
     <Compile Include="TO_Factura.vb" />
