@@ -11,11 +11,11 @@ Public Class BL_Factura
         Dim toFactura As New TO_Factura()
         toFactura.Codigo = Me.Codigo
         toFactura.Cedula_Cliente = Me.Cedula_Cliente
+        toFactura.lista_Productos = New TO_ProductList()
+        toFactura.lista_Productos.toProductList = New List(Of TO_Producto)
         For Each producto As BL_Producto In Me.ListaProductos
             Dim toProdAux As New TO_Producto()
             toProdAux = producto.igualarTOProducto()
-            toFactura.lista_Productos = New TO_ProductList()
-            toFactura.lista_Productos.toProductList = New List(Of TO_Producto)
             toFactura.lista_Productos.toProductList.Add(toProdAux)
         Next
         Dim daoFactura As New DAO_Facturas()

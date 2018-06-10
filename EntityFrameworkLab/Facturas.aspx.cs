@@ -178,18 +178,21 @@ namespace EntityFrameworkLab
 
         protected void btnAddFactura_Click(object sender, EventArgs e)
         {
-            BL_Factura factura = new BL_Factura();
-            factura.Codigo = txtCodigo.Text;
-            factura.Cedula_Cliente = ddlClientes.SelectedValue;
-            factura.ListaProductos = new List<BL_Producto>();
-            foreach (DataRow dRow in dt.Rows )
+            if (txtCodigo.Text.Trim() != "" && ddlClientes.SelectedValue.Trim() != "Seleccionar")
             {
-                BL_Producto blProd = new BL_Producto();
-                blProd.Codigo = (String)dRow["Codigo"];
-                blProd.Cantidad_En_Factura = Convert.ToInt16(dRow["Cantidad"]);
-                factura.ListaProductos.Add(blProd);
+                BL_Factura factura = new BL_Factura();
+                factura.Codigo = txtCodigo.Text;
+                factura.Cedula_Cliente = ddlClientes.SelectedValue;
+                factura.ListaProductos = new List<BL_Producto>();
+                foreach (DataRow dRow in dt.Rows)
+                {
+                    BL_Producto blProd = new BL_Producto();
+                    blProd.Codigo = (String)dRow["Codigo"];
+                    blProd.Cantidad_En_Factura = Convert.ToInt16(dRow["Cantidad"]);
+                    factura.ListaProductos.Add(blProd);
+                }
+                factura.addFactura();
             }
-            factura.addFactura();
         }
     }
 }
