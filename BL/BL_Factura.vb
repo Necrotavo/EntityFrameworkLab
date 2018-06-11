@@ -26,6 +26,9 @@ Public Class BL_Factura
         Dim daoFactura As New DAO_Facturas()
         Dim toFactura As New TO_Factura()
         toFactura.Codigo = Me.Codigo
+        toFactura.lista_Productos = New TO_ProductList()
+        toFactura.lista_Productos.toProductList = New List(Of TO_Producto)
+
         daoFactura.selectAFactura(toFactura)
         Me.Cedula_Cliente = toFactura.Cedula_Cliente
         Me.Fecha = toFactura.Fecha

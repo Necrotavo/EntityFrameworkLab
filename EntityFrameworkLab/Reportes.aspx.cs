@@ -5,18 +5,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
+using System.Data;
 
 namespace EntityFrameworkLab
 {
     public partial class Reportes : System.Web.UI.Page
     {
+        DataTable dt;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             BL_Cliente cliente = new BL_Cliente();
             if (IsPostBack)
             {
                 cliente.listaClientes = (List<BL_Cliente>)ViewState["ListaCedula"];
                 Calendar2.SelectedDate = (DateTime)ViewState["secondDate"];
+                dt = (DataTable)ViewState["DataTable"];
             }
             else
             {
@@ -31,10 +35,22 @@ namespace EntityFrameworkLab
                 ViewState["ListaCedula"] = ddlClientes.DataSource;
                 Calendar2.SelectedDate = DateTime.Today;
                 ViewState["secondDate"] = Calendar2.SelectedDate;
+                dt = new DataTable();
+                dt.Columns.Add("Codigo");
+                dt.Columns.Add("Descripcion");
+                dt.Columns.Add("Precio");
+                dt.Columns.Add("Cantidad");
+                dt.Columns.Add("Total_Producto");
+                ViewState["DataTable"] = dt;
 
             }
+            refreshGrid();
         }
-
+        protected void refreshGrid()
+        {
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+        }
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             if (Calendar1.SelectedDate > DateTime.Today)
@@ -52,6 +68,17 @@ namespace EntityFrameworkLab
             }
         }
 
+        protected int calcularTotal()
+        {
+            int sum = 0;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(GridView1.Rows[i].Cells[dt.Columns.IndexOf("Total_Producto")].Text);
+            }
+
+            return sum;
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             if (ddlClientes.Text != "Seleccionar")
@@ -60,6 +87,7 @@ namespace EntityFrameworkLab
                 facturas.client = ddlClientes.SelectedValue;
                 facturas.desde = Calendar1.SelectedDate;
                 facturas.hasta = Calendar2.SelectedDate;
+                facturas.listaFacturas = new List<BL_Factura>();
                 facturas.getFacturasConRango();
                 llenarFacturaDrop(facturas.listaFacturas);
             }
@@ -80,8 +108,35 @@ namespace EntityFrameworkLab
         }
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Esto con un autopostback carga los datos de la factura en el grid.
-            //tambien requiere calcular el total de la factura y luego llenar el textbox del total.
-        }
+            dt = new DataTable();
+            dt.Columns.Add("Codigo");
+            dt.Columns.Add("Descripcion");
+            dt.Columns.Add("Precio");
+            dt.Columns.Add("Cantidad");
+            dt.Columns.Add("Total_Producto");
+
+            BL_Factura fact = new BL_Factura();
+            fact.Codigo = DropDownList2.SelectedValue;
+            fact.ListaProductos = new List<BL_Producto>();
+            fact.selectAFactura();
+            if (DropDownList2.Text != "Seleccionar")
+            {
+                foreach (var prod in fact.ListaProductos)
+                {
+                    DataRow row = dt.NewRow();
+                    row["Codigo"] = prod.Codigo;
+                    row["Precio"] = prod.Precio;
+                    row["Cantidad"] = prod.Cantidad_En_Factura;
+                    row["Descripcion"] = prod.Descripcion;
+                    row["Total_Producto"] = (prod.Precio * prod.Cantidad_En_Factura);
+                    dt.Rows.Add(row);
+                }
+                ViewState["DataTable"] = dt;
+                refreshGrid();
+                TextBox3.Text = calcularTotal().ToString();
+                }
+            }
     }
+
+
 }
