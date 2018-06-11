@@ -13,6 +13,7 @@ namespace DAO
 
         public void selectFromClient(TOReporte report)
         {
+            report.hasta = report.hasta.AddDays(1);
             var facturas = from r in entidades.FACTURA
                            where ((r.Fecha >= report.desde && r.Fecha <= report.hasta) && r.Cedula_Cliente == report.client)
                            select r;
@@ -72,6 +73,7 @@ namespace DAO
                             toProducto.Descripcion = daoProductos.First().Descripcion;
                             toProducto.Precio = Convert.ToInt16(daoProductos.First().Precio);
                             toProducto.Cantidad_Inventario = Convert.ToInt16(daoProductos.First().Cantidad_Inventario);
+                            toProducto.Cantidad_En_Factura = Convert.ToInt16(detalleFactura.Cantidad);
                             toFactura.lista_Productos.toProductList.Add(toProducto);
                         }
                     }

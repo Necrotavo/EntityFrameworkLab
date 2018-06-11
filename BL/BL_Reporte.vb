@@ -17,7 +17,7 @@ Public Class BL_Reporte
         For Each element As TO_Factura In report.listaFacturas
             Dim blFact As New BL_Factura
             blFact.Codigo = element.Codigo
-            listaFacturas.Add(New BL_Factura)
+            listaFacturas.Add(blFact)
         Next
 
 
