@@ -34,6 +34,12 @@
     font: 35px Lucida Sans Unicode;
     margin: 5px;
 }
+
+.labelError{
+    font: 30px bold Lucida Sans Unicode;
+    margin: 5px;
+}
+
 .menuButton{
     background-color: antiquewhite;
     border: solid #916919;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using TO;
@@ -53,11 +54,19 @@ namespace DAO
 
         public void deleteClient(TO_Cliente client)
         {
-            var cliente = from r in entidades.CLIENTE where r.Cedula == client.Cedula select r;
-            if (cliente.Count() > 0)
+            try
             {
-                entidades.CLIENTE.Remove(cliente.First());
-                entidades.SaveChanges();
+                var cliente = from r in entidades.CLIENTE where r.Cedula == client.Cedula select r;
+                if (cliente.Count() > 0)
+                {
+                    entidades.CLIENTE.Remove(cliente.First());
+                    entidades.SaveChanges();
+                }
+            }
+            catch (DbUpdateException)
+            {
+
+                throw;
             }
         }
 

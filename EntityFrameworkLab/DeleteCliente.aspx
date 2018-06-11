@@ -16,6 +16,8 @@
                             <br />
                             <h1 style="text-align:center">Datos del cliente</h1>
                             <br />
+                            <asp:Label ID="lblError" runat="server" CssClass=""></asp:Label>
+                            <br />
                             <br />
                             <asp:Label ID="lblCed" runat="server" Text="Cedula:" CssClass="label"></asp:Label>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

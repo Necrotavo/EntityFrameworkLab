@@ -16,6 +16,7 @@ namespace EntityFrameworkLab
             enableTxtBox(false);
             if (IsPostBack)
             {
+                lblError.Text = "";
                 if ((Boolean)ViewState["HeEliminado"]) {
                     loadList();
                 }
@@ -39,12 +40,26 @@ namespace EntityFrameworkLab
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            BL_Cliente cliente = new BL_Cliente();
-            cliente.Cedula = ddlClientes.SelectedValue;
-            cliente.deleteClient();
-            loadList();
-            ViewState["HeEliminado"] = true;
-            clearTxtBox();
+            if (ddlClientes.SelectedValue.Trim() != "Seleccionar")
+            {
+                BL_Cliente cliente = new BL_Cliente();
+                cliente.Cedula = ddlClientes.SelectedValue;
+                try
+                {
+                    cliente.deleteClient();
+                    loadList();
+                    ViewState["HeEliminado"] = true;
+                    clearTxtBox();
+                }
+                catch (Exception)
+                {
+                    lblError.Text = "Este cliente tiene facturas, no se puede elminar";
+                    loadList();
+                    ViewState["HeEliminado"] = false;
+                    clearTxtBox();
+                }
+            }
+            
         }
 
         protected void enableTxtBox(Boolean value)

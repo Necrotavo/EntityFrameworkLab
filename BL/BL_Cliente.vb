@@ -1,4 +1,4 @@
-﻿
+﻿Imports System
 Imports DAO
 Imports [TO]
 <Serializable>
@@ -17,16 +17,21 @@ Public Class BL_Cliente
     End Sub
 
     Public Sub modifyClient()
+
         Dim tocliente As TO_Cliente = igualarTOaBL()
         Dim daoClients As New DAO_Clientes
         daoClients.modifyClient(tocliente)
     End Sub
 
     Public Sub deleteClient()
-        Dim tocliente As New TO_Cliente()
-        tocliente.Cedula = Me.Cedula
-        Dim daoClients As New DAO_Clientes()
-        daoClients.deleteClient(tocliente)
+        Try
+            Dim tocliente As New TO_Cliente()
+            tocliente.Cedula = Me.Cedula
+            Dim daoClients As New DAO_Clientes()
+            daoClients.deleteClient(tocliente)
+        Catch ex As Exception
+            Throw New System.Exception("An exception has occurred.")
+        End Try
     End Sub
 
     Public Sub loadClient()
