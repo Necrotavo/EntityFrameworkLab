@@ -1,4 +1,4 @@
-﻿Imports System
+﻿Imports System.Data.Entity.Infrastructure.DbUpdateException
 Imports DAO
 Imports [TO]
 <Serializable>
@@ -11,9 +11,13 @@ Public Class BL_Cliente
     Property listaClientes As List(Of BL_Cliente)
 
     Public Sub insertClient()
-        Dim tocliente As TO_Cliente = igualarTOaBL()
-        Dim daoClients As New DAO_Clientes
-        daoClients.insertClient(tocliente)
+        Try
+            Dim tocliente As TO_Cliente = igualarTOaBL()
+            Dim daoClients As New DAO_Clientes
+            daoClients.insertClient(tocliente)
+        Catch ex As Exception
+            Throw New Exception("Element cliente ya existe")
+        End Try
     End Sub
 
     Public Sub modifyClient()

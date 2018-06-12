@@ -21,23 +21,39 @@ namespace EntityFrameworkLab
         {
             if (!hasEmptytxt())
             {
-                BL_Cliente client = new BL_Cliente();
-                client.Cedula = TextBox1.Text;
-                client.Nombre = TextBox2.Text;
-                client.Apellido = TextBox3.Text;
-                client.Correo = TextBox4.Text;
-                client.Telefono = TextBox5.Text;
+                try
+                {
+                    BL_Cliente client = new BL_Cliente();
+                    client.Cedula = TextBox1.Text;
+                    client.Nombre = TextBox2.Text;
+                    client.Apellido = TextBox3.Text;
+                    client.Correo = TextBox4.Text;
+                    client.Telefono = TextBox5.Text;
 
-                client.insertClient();
+                    client.insertClient();
+
+                    clearTxtbx();
+                    lblError.Text = "El cliente se ha ingresado correctamente";
+                }
+                catch (Exception)
+                {
+
+                    clearTxtbx();
+                    lblError.Text = "La cedula ingresada ya pertenece a un cliente ingresado, ingrese una cedula diferente";
+                }
             }
             else {
-                TextBox1.Text = "";
-                TextBox2.Text = "";
-                TextBox3.Text = "";
-                TextBox4.Text = "";
-                TextBox5.Text = "";
+                clearTxtbx();
                 lblError.Text = "Los campos de texto no deben estar sin texto";
             }
+        }
+
+        protected void clearTxtbx() {
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)

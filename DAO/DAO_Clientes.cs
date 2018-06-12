@@ -13,15 +13,23 @@ namespace DAO
 
         public void insertClient(TO_Cliente client)
         {
-            CLIENTE entClient = new CLIENTE();
-            entClient.Apellido = client.Apellido;
-            entClient.Cedula = client.Cedula;
-            entClient.Correo = client.Correo;
-            entClient.Nombre = client.Nombre;
-            entClient.Telefono = client.Telefono;
+            try
+            {
+                CLIENTE entClient = new CLIENTE();
+                entClient.Apellido = client.Apellido;
+                entClient.Cedula = client.Cedula;
+                entClient.Correo = client.Correo;
+                entClient.Nombre = client.Nombre;
+                entClient.Telefono = client.Telefono;
 
-            entidades.CLIENTE.Add(entClient);
-            entidades.SaveChanges();
+                entidades.CLIENTE.Add(entClient);
+                entidades.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+
+                throw;
+            }
         }
 
         public void selectClientes(TO_ClienteList list)
