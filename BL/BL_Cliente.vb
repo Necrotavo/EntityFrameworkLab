@@ -30,7 +30,7 @@ Public Class BL_Cliente
             Dim daoClients As New DAO_Clientes()
             daoClients.deleteClient(tocliente)
         Catch ex As Exception
-            Throw New System.Exception("An exception has occurred.")
+            Throw New System.Exception("El cliente tiene facturas")
         End Try
     End Sub
 

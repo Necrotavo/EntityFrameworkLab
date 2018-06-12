@@ -15,10 +15,11 @@ namespace EntityFrameworkLab
             enableTxtBox(false);
             if (IsPostBack)
             {
-
+                lblError.Text = "";
             }
             else {
                 loadList();
+                lblError.Text = "";
             }
         }
 
@@ -36,13 +37,21 @@ namespace EntityFrameworkLab
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            BL_Cliente cliente = new BL_Cliente();
-            cliente.Cedula = ddlCedulas.SelectedValue;
-            cliente.Nombre = txtName.Text;
-            cliente.Correo = txtMail.Text;
-            cliente.Telefono = txtTelefono.Text;
-            cliente.Apellido = txtLastName.Text;
-            cliente.modifyClient();
+            if (!hasEmpty())
+            {
+                BL_Cliente cliente = new BL_Cliente();
+                cliente.Cedula = ddlCedulas.SelectedValue;
+                cliente.Nombre = txtName.Text;
+                cliente.Correo = txtMail.Text;
+                cliente.Telefono = txtTelefono.Text;
+                cliente.Apellido = txtLastName.Text;
+                cliente.modifyClient();
+            }
+            else {
+                lblError.Text = "Ningún campo debe estar vacío";
+                ddlCedulas.SelectedValue = "Seleccionar";
+            }
+            
         }
 
         protected void enableTxtBox(Boolean value) {
@@ -70,6 +79,17 @@ namespace EntityFrameworkLab
         protected void btnSalir_Click(object sender, EventArgs e)
         {
             Response.Redirect("MenuClientes.aspx");
+        }
+
+        protected Boolean hasEmpty() {
+            if (txtName.Text.Trim() == "" || txtLastName.Text.Trim() == "" ||
+                txtMail.Text.Trim() == "" || txtTelefono.Text.Trim() == "")
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
 }
