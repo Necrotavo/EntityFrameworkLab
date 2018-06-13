@@ -17,7 +17,7 @@
         <br />
         <asp:Label ID="lblNombre" runat="server" Text="Nombre:" CssClass="label"></asp:Label>
         &nbsp;&nbsp;
-        <asp:TextBox ID="txtNombreCliente" runat="server" CssClass="textBox" Width="256px"></asp:TextBox>
+        <asp:TextBox ID="txtNombreCliente" runat="server" CssClass="textBox" Width="256px" ReadOnly="True"></asp:TextBox>
         <br />
         <div style="border-bottom: solid black">
         </div>
@@ -27,15 +27,17 @@
         <asp:DropDownList ID="ddlProductos" runat="server" CssClass="menuButton" AutoPostBack="True" OnSelectedIndexChanged="ddlProductos_SelectedIndexChanged"></asp:DropDownList>
         <br />
         <asp:Label ID="lblDisponibles" runat="server" Text="Disponibles: " CssClass="label"></asp:Label>
-        <asp:TextBox ID="txtCantDisponibles" runat="server" CssClass="smallBox"></asp:TextBox>
+        <asp:TextBox ID="txtCantDisponibles" runat="server" CssClass="smallBox" ReadOnly="True"></asp:TextBox>
         <br />
 &nbsp;
         <asp:Label ID="lblPrecio" runat="server" Text="Precio:" CssClass="label"></asp:Label>
         &nbsp;&nbsp;
-        <asp:TextBox ID="txtPrecio" runat="server" CssClass="smallBox"></asp:TextBox>
+        <asp:TextBox ID="txtPrecio" runat="server" CssClass="smallBox" ReadOnly="True"></asp:TextBox>
         <br />
         <asp:Label ID="lblCantidad" runat="server" Text="Cantidad a agregar: " CssClass="label"></asp:Label>
         <asp:TextBox ID="txtCantComprar" runat="server" CssClass="smallBox"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCantComprar" ErrorMessage="***"></asp:RequiredFieldValidator>
+        <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="txtCantComprar" ErrorMessage="Verificar cantidad" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
         <br />
         <asp:Button ID="btnAdd" runat="server" Text="AgregarProducto" CssClass="menuButton" OnClick="btnAdd_Click"/>
 

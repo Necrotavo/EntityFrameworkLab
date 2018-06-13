@@ -124,7 +124,7 @@ namespace EntityFrameworkLab
         {
             if (txtCantComprar.Text.Trim() != "" && blProductoActual != null)
             {
-                if (Convert.ToInt16(txtCantComprar.Text.Trim()) > 0)
+                if (Convert.ToInt16(txtCantComprar.Text.Trim()) > 0 && Convert.ToInt16(txtCantComprar.Text.Trim()) < Convert.ToInt16(txtCantDisponibles.Text.Trim()))
                 {
                     DataRow row = dt.NewRow();
                     row["Codigo"] = blProductoActual.Codigo;
@@ -193,6 +193,12 @@ namespace EntityFrameworkLab
                 }
                 factura.addFactura();
             }
+        }
+
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = (Convert.ToInt16(txtCantDisponibles.Text) > Convert.ToInt16(txtCantComprar.Text));
+
         }
     }
 }
