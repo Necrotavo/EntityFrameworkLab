@@ -1,5 +1,4 @@
-﻿Imports System.Data.Entity.Infrastructure.DbUpdateException
-Imports DAO
+﻿Imports DAO
 Imports [TO]
 <Serializable>
 Public Class BL_Cliente

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,72 +14,100 @@ namespace DAO
 
         public void selectFromClient(TOReporte report)
         {
-            report.hasta = report.hasta.AddDays(1);
-            var facturas = from r in entidades.FACTURA
-                           where ((r.Fecha >= report.desde && r.Fecha <= report.hasta) && r.Cedula_Cliente == report.client)
-                           select r;
-
-            if (facturas.Count() > 0)
+            try
             {
-                foreach (FACTURA daoFactura in facturas)
+                report.hasta = report.hasta.AddDays(1);
+                var facturas = from r in entidades.FACTURA
+                               where ((r.Fecha >= report.desde && r.Fecha <= report.hasta) && r.Cedula_Cliente == report.client)
+                               select r;
+
+                if (facturas.Count() > 0)
                 {
-                    TO_Factura toFactura = new TO_Factura();
-                    toFactura.Codigo = daoFactura.Codigo;
-                    report.listaFacturas.Add(toFactura);
+                    foreach (FACTURA daoFactura in facturas)
+                    {
+                        TO_Factura toFactura = new TO_Factura();
+                        toFactura.Codigo = daoFactura.Codigo;
+                        report.listaFacturas.Add(toFactura);
+                    }
                 }
             }
+            catch (DbUpdateException)
+            {
+
+                throw;
+            }
+            
         }
 
         public void addFactura(TO_Factura factura)
         {
-            FACTURA fact = new FACTURA();
-            fact.Cedula_Cliente = factura.Cedula_Cliente;
-            fact.Codigo = factura.Codigo;
-            var dquery = entidades.Database.SqlQuery<DateTime>("Select getdate()");
-            fact.Fecha = dquery.AsEnumerable().First();
-            foreach (var item in factura.lista_Productos.toProductList)
+            try
             {
-                DETALLE_FACTURA detalle = new DETALLE_FACTURA();
-                detalle.Cantidad = item.Cantidad_En_Factura;
-                detalle.Codigo_Factura = factura.Codigo;
-                detalle.Codigo_Producto = item.Codigo;
-                fact.DETALLE_FACTURA.Add(detalle);
+                FACTURA fact = new FACTURA();
+                fact.Cedula_Cliente = factura.Cedula_Cliente;
+                fact.Codigo = factura.Codigo;
+                var dquery = entidades.Database.SqlQuery<DateTime>("Select getdate()");
+                fact.Fecha = dquery.AsEnumerable().First();
+                foreach (var item in factura.lista_Productos.toProductList)
+                {
+                    DETALLE_FACTURA detalle = new DETALLE_FACTURA();
+                    detalle.Cantidad = item.Cantidad_En_Factura;
+                    detalle.Codigo_Factura = factura.Codigo;
+                    detalle.Codigo_Producto = item.Codigo;
+                    fact.DETALLE_FACTURA.Add(detalle);
+                }
+                entidades.FACTURA.Add(fact);
+                entidades.SaveChanges();
+
             }
-            entidades.FACTURA.Add(fact);
-            entidades.SaveChanges();
+            catch (DbUpdateException)
+            {
+
+                throw;
+            }
 
 
         }
 
         public void selectAFactura(TO_Factura toFactura)
         {
-            var factura = from r in entidades.FACTURA where r.Codigo == toFactura.Codigo select r;
-            if (factura.Count() > 0)
+            try
             {
-                toFactura.Cedula_Cliente = factura.First().Cedula_Cliente;
-                toFactura.Fecha = factura.First().Fecha;
-
-                var detallesCompra = from r in entidades.DETALLE_FACTURA where r.Codigo_Factura == toFactura.Codigo select r;
-                if (detallesCompra.Count() > 0)
+                var factura = from r in entidades.FACTURA where r.Codigo == toFactura.Codigo select r;
+                if (factura.Count() > 0)
                 {
-                    foreach (DETALLE_FACTURA detalleFactura in detallesCompra)
-                    {
-                        TO_Producto toProducto = new TO_Producto();
-                        toProducto.Cantidad_En_Factura = Convert.ToInt16(detalleFactura.Cantidad);
+                    toFactura.Cedula_Cliente = factura.First().Cedula_Cliente;
+                    toFactura.Fecha = factura.First().Fecha;
 
-                        var daoProductos = from r in entidades.PRODUCTO where r.Codigo == detalleFactura.Codigo_Producto select r;
-                        if (daoProductos.Count() > 0)
+                    var detallesCompra = from r in entidades.DETALLE_FACTURA where r.Codigo_Factura == toFactura.Codigo select r;
+                    if (detallesCompra.Count() > 0)
+                    {
+                        foreach (DETALLE_FACTURA detalleFactura in detallesCompra)
                         {
-                            toProducto.Codigo = daoProductos.First().Codigo;
-                            toProducto.Descripcion = daoProductos.First().Descripcion;
-                            toProducto.Precio = Convert.ToInt16(daoProductos.First().Precio);
-                            toProducto.Cantidad_Inventario = Convert.ToInt16(daoProductos.First().Cantidad_Inventario);
+                            TO_Producto toProducto = new TO_Producto();
                             toProducto.Cantidad_En_Factura = Convert.ToInt16(detalleFactura.Cantidad);
-                            toFactura.lista_Productos.toProductList.Add(toProducto);
+
+                            var daoProductos = from r in entidades.PRODUCTO where r.Codigo == detalleFactura.Codigo_Producto select r;
+                            if (daoProductos.Count() > 0)
+                            {
+                                toProducto.Codigo = daoProductos.First().Codigo;
+                                toProducto.Descripcion = daoProductos.First().Descripcion;
+                                toProducto.Precio = Convert.ToInt16(daoProductos.First().Precio);
+                                toProducto.Cantidad_Inventario = Convert.ToInt16(daoProductos.First().Cantidad_Inventario);
+                                toProducto.Cantidad_En_Factura = Convert.ToInt16(detalleFactura.Cantidad);
+                                toFactura.lista_Productos.toProductList.Add(toProducto);
+                            }
                         }
                     }
                 }
             }
+            catch (DbUpdateException)
+            {
+
+                throw;
+            }
+
+
         }
 
     }

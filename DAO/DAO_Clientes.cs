@@ -34,7 +34,6 @@ namespace DAO
 
         public void selectClientes(TO_ClienteList list)
         {
-            //var clientes = entidades.CLIENTEs.Select(c => c);//NO SE SI EL QUERY ESTA BIEN
             var clientes = from r in entidades.CLIENTE select r;
             foreach (var item in clientes)
             {
