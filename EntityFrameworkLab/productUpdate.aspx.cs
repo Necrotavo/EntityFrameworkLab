@@ -33,15 +33,25 @@ namespace EntityFrameworkLab
 
         protected void btnExecute_Click(object sender, EventArgs e)
         {
-            if (dropClients.Text != "Seleccionar")
+            try
             {
-                blProduct.Codigo = dropClients.Text;
-                blProduct.Descripcion = TextBox2.Text;
-                blProduct.Precio = Convert.ToInt16(TextBox3.Text);
-                blProduct.Cantidad_Inventario = Convert.ToInt16(TextBox4.Text);
+                if (dropClients.Text != "Seleccionar")
+                {
+                    blProduct.Codigo = dropClients.Text;
+                    blProduct.Descripcion = TextBox2.Text;
+                    blProduct.Precio = Convert.ToInt16(TextBox3.Text);
+                    blProduct.Cantidad_Inventario = Convert.ToInt16(TextBox4.Text);
 
-                blProduct.modifyProduct();
+                    blProduct.modifyProduct();
+                    lblError.Text = "Exito al actualizar producto";
+                }
             }
+            catch (Exception)
+            {
+
+                lblError.Text = "Error al actualizar producto";
+            }
+
 
         }
 
