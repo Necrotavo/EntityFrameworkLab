@@ -56,6 +56,20 @@ namespace EntityFrameworkLab
             return sum;
         }
 
+        protected bool existe()
+        {
+           
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (dgvDetalleFactura.Rows[i].Cells[dt.Columns.IndexOf("Codigo")].Text.Trim() == blProductoActual.Codigo.Trim() )
+                {
+                    return true;
+                } 
+            }
+
+            return false;
+        }
+
         protected void createDataTable() {
             dt = new DataTable();
             dt.Columns.Add("Codigo de Producto", Type.GetType("System.String"));
@@ -124,7 +138,9 @@ namespace EntityFrameworkLab
         {
             if (txtCantComprar.Text.Trim() != "" && blProductoActual != null)
             {
-                if (Convert.ToInt16(txtCantComprar.Text.Trim()) > 0 && Convert.ToInt16(txtCantComprar.Text.Trim()) < Convert.ToInt16(txtCantDisponibles.Text.Trim()))
+                if (Convert.ToInt16(txtCantComprar.Text.Trim()) > 0 
+                    && Convert.ToInt16(txtCantComprar.Text.Trim()) < Convert.ToInt16(txtCantDisponibles.Text.Trim())
+                    && !existe())
                 {
                     DataRow row = dt.NewRow();
                     row["Codigo"] = blProductoActual.Codigo;
