@@ -6,6 +6,12 @@
 <head runat="server">
     <link href="StyleSheet1.css" rel="stylesheet" />
     <title></title>
+    <style type="text/css">
+        #form1 {
+            height: 696px;
+            width: 789px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -36,14 +42,21 @@
         <br />
         <asp:Label ID="lblCantidad" runat="server" Text="Cantidad a agregar: " CssClass="label"></asp:Label>
         <asp:TextBox ID="txtCantComprar" runat="server" CssClass="smallBox"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCantComprar" ErrorMessage="***"></asp:RequiredFieldValidator>
-        <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="txtCantComprar" ErrorMessage="Verificar cantidad" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+        <br />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCantComprar" ErrorMessage="La cantidad debe ser un numerico"></asp:RequiredFieldValidator>
+        <br />
+        <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="txtCantComprar" ErrorMessage="Debe ser una cantidad disponible" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
         <br />
         <asp:Button ID="btnAdd" runat="server" Text="AgregarProducto" CssClass="menuButton" OnClick="btnAdd_Click"/>
 
+        <br />
+        <br />
+        &nbsp;&nbsp;
+        <asp:Label ID="lblContinue" runat="server" Text="A continuacioin los detalles de la factura" CssClass="labelError"></asp:Label>
+
     </div>
 
-    <div class="column" style="text-align: center">
+    <div class="column" style="text-align:center">
     <asp:Label ID="lblFactura" runat="server" Text="FACTURA" CssClass="label"></asp:Label>
         <br />
         <asp:Label ID="Label1" runat="server" Text="Cod " CssClass="label"></asp:Label>
@@ -61,6 +74,9 @@
         <asp:Button ID="btnRemoveFromList" runat="server" Text="Remover producto" CssClass="menuButton" OnClick="btnRemoveFromList_Click"/>
         <br />
         <asp:Button ID="btnAddFactura" runat="server" Text="Guardar" CssClass="menuButton" OnClick="btnAddFactura_Click"/>
+        <br />
+        <br />
+        <asp:Label ID="lblError" runat="server" CssClass="labelError"></asp:Label>
     </div>
     </form>
 </body>

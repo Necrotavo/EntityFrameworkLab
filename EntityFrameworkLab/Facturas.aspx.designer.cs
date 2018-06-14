@@ -157,6 +157,15 @@ namespace EntityFrameworkLab {
         protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
+        /// lblContinue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContinue;
+        
+        /// <summary>
         /// lblFactura control.
         /// </summary>
         /// <remarks>
@@ -245,5 +254,14 @@ namespace EntityFrameworkLab {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddFactura;
+        
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }

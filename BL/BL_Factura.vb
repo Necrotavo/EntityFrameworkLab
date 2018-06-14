@@ -8,8 +8,8 @@ Public Class BL_Factura
     Property ListaProductos As List(Of BL_Producto)
 
     Public Sub addFactura()
-        Try
-            Dim toFactura As New TO_Factura()
+        'Try
+        Dim toFactura As New TO_Factura()
             toFactura.Codigo = Me.Codigo
             toFactura.Cedula_Cliente = Me.Cedula_Cliente
             toFactura.lista_Productos = New TO_ProductList()
@@ -21,9 +21,9 @@ Public Class BL_Factura
             Next
             Dim daoFactura As New DAO_Facturas()
             daoFactura.addFactura(toFactura)
-        Catch ex As Exception
-            Throw New Exception("Error al insertar factura")
-        End Try
+            'Catch ex As Exception
+        ' Throw New Exception("Error al insertar factura")
+        'End Try
 
     End Sub
 

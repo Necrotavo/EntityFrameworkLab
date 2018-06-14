@@ -138,9 +138,7 @@ namespace EntityFrameworkLab
         {
             if (txtCantComprar.Text.Trim() != "" && blProductoActual != null)
             {
-                if (Convert.ToInt16(txtCantComprar.Text.Trim()) > 0 
-                    && Convert.ToInt16(txtCantComprar.Text.Trim()) < Convert.ToInt16(txtCantDisponibles.Text.Trim())
-                    && !existe())
+                if (canAdd())
                 {
                     DataRow row = dt.NewRow();
                     row["Codigo"] = blProductoActual.Codigo;
@@ -151,10 +149,33 @@ namespace EntityFrameworkLab
                     refreshGrid();
 
                 }
+                else {
+                    lblError.Text = "Lacantidad debe ser un numero menor a la cantidad disponible";
+                }
             }
             ViewState["DataTable"] = dt;
             ViewState["ProductoActual"] = blProductoActual;
             txtTotal.Text = calcularTotal().ToString();
+        }
+
+        public Boolean canAdd() {
+            try
+            {
+                if (Convert.ToInt16(txtCantComprar.Text.Trim()) > 0
+                    && Convert.ToInt16(txtCantComprar.Text.Trim()) < Convert.ToInt16(txtCantDisponibles.Text.Trim())
+                    && !existe())
+                {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
         protected void btnUp_Click(object sender, EventArgs e)
@@ -194,26 +215,42 @@ namespace EntityFrameworkLab
 
         protected void btnAddFactura_Click(object sender, EventArgs e)
         {
-            if (txtCodigo.Text.Trim() != "" && ddlClientes.SelectedValue.Trim() != "Seleccionar")
+            try
             {
-                BL_Factura factura = new BL_Factura();
-                factura.Codigo = txtCodigo.Text;
-                factura.Cedula_Cliente = ddlClientes.SelectedValue;
-                factura.ListaProductos = new List<BL_Producto>();
-                foreach (DataRow dRow in dt.Rows)
+                if (txtCodigo.Text.Trim() != "" && ddlClientes.SelectedValue.Trim() != "Seleccionar")
                 {
-                    BL_Producto blProd = new BL_Producto();
-                    blProd.Codigo = (String)dRow["Codigo"];
-                    blProd.Cantidad_En_Factura = Convert.ToInt16(dRow["Cantidad"]);
-                    factura.ListaProductos.Add(blProd);
+                    BL_Factura factura = new BL_Factura();
+                    factura.Codigo = txtCodigo.Text;
+                    factura.Cedula_Cliente = ddlClientes.SelectedValue;
+                    factura.ListaProductos = new List<BL_Producto>();
+                    foreach (DataRow dRow in dt.Rows)
+                    {
+                        BL_Producto blProd = new BL_Producto();
+                        blProd.Codigo = (String)dRow["Codigo"];
+                        blProd.Cantidad_En_Factura = Convert.ToInt16(dRow["Cantidad"]);
+                        factura.ListaProductos.Add(blProd);
+                    }
+                    factura.addFactura();
                 }
-                factura.addFactura();
             }
+            catch (Exception)
+            {
+
+                lblError.Text = "Ese codigo de factura ya existe";
+            }
+            
         }
 
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            args.IsValid = (Convert.ToInt16(txtCantDisponibles.Text) > Convert.ToInt16(txtCantComprar.Text));
+            try
+            {
+                args.IsValid = (Convert.ToInt16(txtCantDisponibles.Text) > Convert.ToInt16(txtCantComprar.Text));
+            }
+            catch (Exception)
+            {
+                lblError.Text = "No se debe ingresar texto en los campos numericos";
+            }
 
         }
     }

@@ -52,7 +52,6 @@
 
 .column{
 float: left;
-    margin: 20px;
     background-color: grey;
     padding-bottom: 1%;
     background-color: antiquewhite;
@@ -60,7 +59,27 @@ float: left;
     margin-right: 9%;
     padding-left: 3px;
     padding-right: 3px;
+    height: 645px;
+    width: 493px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
+.columnDos{
+float: left;
+    background-color: grey;
+    padding-bottom: 1%;
+    background-color: antiquewhite;
+    margin-left: 10%;
+    margin-right: 9%;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 537px;
+    width: 493px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
 .midDiv{
     display: inline-block;
     width: 50%;
